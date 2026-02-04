@@ -5,6 +5,98 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, CalendarDays, Clock, CheckCircle, MessageCircle } from "lucide-react"
 
+type ListItem = {
+  type: "label" | "plain"
+  label?: string
+  text: string
+  number?: number
+}
+
+type ContentBlock =
+  | { type: "h2" | "h3" | "p"; text: string }
+  | { type: "ul" | "ol"; items: ListItem[] }
+
+function parseArticleContent(content: string): ContentBlock[] {
+  const blocks: ContentBlock[] = []
+  const lines = content.split("\n")
+  let currentList: { type: "ul" | "ol"; items: ListItem[] } | null = null
+
+  const flushList = () => {
+    if (currentList) {
+      blocks.push(currentList)
+      currentList = null
+    }
+  }
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim()
+    if (!line) {
+      flushList()
+      continue
+    }
+
+    if (line.startsWith("## ")) {
+      flushList()
+      blocks.push({ type: "h2", text: line.replace("## ", "") })
+      continue
+    }
+
+    if (line.startsWith("### ")) {
+      flushList()
+      blocks.push({ type: "h3", text: line.replace("### ", "") })
+      continue
+    }
+
+    const labeledBulletMatch = line.match(/^- \*\*(.+?)\*\*\s*:\s*(.+)/)
+    if (labeledBulletMatch) {
+      if (!currentList || currentList.type !== "ul") {
+        flushList()
+        currentList = { type: "ul", items: [] }
+      }
+      currentList.items.push({
+        type: "label",
+        label: labeledBulletMatch[1],
+        text: labeledBulletMatch[2],
+      })
+      continue
+    }
+
+    const bulletMatch = line.match(/^- (.+)/)
+    if (bulletMatch) {
+      if (!currentList || currentList.type !== "ul") {
+        flushList()
+        currentList = { type: "ul", items: [] }
+      }
+      currentList.items.push({
+        type: "plain",
+        text: bulletMatch[1],
+      })
+      continue
+    }
+
+    const numberedMatch = line.match(/^(\d+)\.\s+\*\*(.+?)\*\*\s*:\s*(.+)/)
+    if (numberedMatch) {
+      if (!currentList || currentList.type !== "ol") {
+        flushList()
+        currentList = { type: "ol", items: [] }
+      }
+      currentList.items.push({
+        type: "label",
+        number: Number(numberedMatch[1]),
+        label: numberedMatch[2],
+        text: numberedMatch[3],
+      })
+      continue
+    }
+
+    flushList()
+    blocks.push({ type: "p", text: line })
+  }
+
+  flushList()
+  return blocks
+}
+
 export async function generateStaticParams() {
   return articles.map((article) => ({
     slug: article.slug,
@@ -34,11 +126,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: "article",
       siteName: "QuizCitoyen",
       locale: "fr_FR",
+      images: [
+        {
+          url: "/logo.png",
+          alt: "QuizCitoyen",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${article.title} | Préparation QuizCitoyen`,
       description: article.excerpt,
+      images: ["/logo.png"],
     },
   }
 }
@@ -51,10 +150,41 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     notFound()
   }
   const dateIso = toISODate(article.date) ?? article.date
+  const blocks = parseArticleContent(article.content)
+  const siteUrl = "https://www.quizcitoyen.fr"
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: dateIso,
+    dateModified: dateIso,
+    image: `${siteUrl}/logo.png`,
+    author: {
+      "@type": "Organization",
+      name: "QuizCitoyen",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "QuizCitoyen",
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/articles/${article.slug}`,
+    },
+  }
 
   return (
     <div className="py-12 sm:py-16">
       <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* Back link */}
         <div className="mb-8">
           <Button variant="ghost" asChild className="gap-2 pl-0 hover:bg-transparent hover:text-primary">
@@ -105,58 +235,66 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 </li>
               ))}
             </ul>
-          </CardContent>
+        </CardContent>
         </Card>
 
         {/* Article content */}
         <div className="prose prose-slate max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-h2:mt-10 prose-h2:text-2xl prose-h3:mt-8 prose-h3:text-xl prose-p:leading-relaxed prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground">
-          {article.content.split('\n').map((paragraph, index) => {
-            if (paragraph.startsWith('## ')) {
-              return <h2 key={index} className="text-foreground">{paragraph.replace('## ', '')}</h2>
+          {blocks.map((block, index) => {
+            if (block.type === "h2") {
+              return <h2 key={index} className="text-foreground">{block.text}</h2>
             }
-            if (paragraph.startsWith('### ')) {
-              return <h3 key={index} className="text-foreground">{paragraph.replace('### ', '')}</h3>
+            if (block.type === "h3") {
+              return <h3 key={index} className="text-foreground">{block.text}</h3>
             }
-            if (paragraph.startsWith('- **')) {
-              const match = paragraph.match(/- \*\*(.+?)\*\*\s*:\s*(.+)/)
-              if (match) {
-                return (
-                  <div key={index} className="flex items-start gap-2 py-1">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                    <p className="m-0">
-                      <strong className="text-foreground">{match[1]}</strong>
-                      <span className="text-muted-foreground"> : {match[2]}</span>
-                    </p>
-                  </div>
-                )
-              }
+            if (block.type === "p") {
+              return <p key={index}>{block.text}</p>
             }
-            if (paragraph.startsWith('- ')) {
+            if (block.type === "ul") {
               return (
-                <div key={index} className="flex items-start gap-2 py-1">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  <p className="m-0 text-muted-foreground">{paragraph.replace('- ', '')}</p>
-                </div>
+                <ul key={index} className="space-y-2">
+                  {block.items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <p className="m-0">
+                        {item.type === "label" ? (
+                          <>
+                            <strong className="text-foreground">{item.label}</strong>
+                            <span className="text-muted-foreground"> : {item.text}</span>
+                          </>
+                        ) : (
+                          <span className="text-muted-foreground">{item.text}</span>
+                        )}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
               )
             }
-            if (paragraph.match(/^\d+\.\s+\*\*/)) {
-              const match = paragraph.match(/^(\d+)\.\s+\*\*(.+?)\*\*\s*:\s*(.+)/)
-              if (match) {
-                return (
-                  <div key={index} className="flex items-start gap-3 py-2">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-medium text-foreground">
-                      {match[1]}
-                    </span>
-                    <p className="m-0">
-                      <strong className="text-foreground">{match[2]}</strong>
-                      <span className="text-muted-foreground"> : {match[3]}</span>
-                    </p>
-                  </div>
-                )
-              }
+            if (block.type === "ol") {
+              return (
+                <ol key={index} className="space-y-3">
+                  {block.items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="flex items-start gap-3">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-medium text-foreground">
+                        {item.number ?? itemIndex + 1}
+                      </span>
+                      <p className="m-0">
+                        {item.type === "label" ? (
+                          <>
+                            <strong className="text-foreground">{item.label}</strong>
+                            <span className="text-muted-foreground"> : {item.text}</span>
+                          </>
+                        ) : (
+                          <span className="text-muted-foreground">{item.text}</span>
+                        )}
+                      </p>
+                    </li>
+                  ))}
+                </ol>
+              )
             }
-            if (paragraph.trim() === '') return null
-            return <p key={index}>{paragraph}</p>
+            return null
           })}
         </div>
 

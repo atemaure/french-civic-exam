@@ -18,11 +18,18 @@ export const metadata = {
     type: "website",
     siteName: "QuizCitoyen",
     locale: "fr_FR",
+    images: [
+      {
+        url: "/logo.png",
+        alt: "QuizCitoyen",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Fiches pratiques | Préparation QuizCitoyen",
     description: "Fiches pratiques organisées par thématique pour préparer l'examen civique et l'entretien de naturalisation française.",
+    images: ["/logo.png"],
   },
 }
 
