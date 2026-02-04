@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
-import { Scale, Landmark, BookOpen, Heart, Users } from "lucide-react"
+import { Scale, Landmark, BookOpen, Heart, Users, Globe } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
 const themeIcons: Record<string, LucideIcon> = {
@@ -9,6 +9,7 @@ const themeIcons: Record<string, LucideIcon> = {
   institutions: Landmark,
   histoire: BookOpen,
   vivre: Users,
+  europe: Globe,
 }
 
 interface ThemeCardProps {

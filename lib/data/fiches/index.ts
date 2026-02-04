@@ -4,6 +4,7 @@ import { droits } from "./droits"
 import { institutions } from "./institutions"
 import { histoire } from "./histoire"
 import { vivre } from "./vivre"
+import { europe } from "./europe"
 
 const themeData: Array<{
   slug: Theme["slug"]
@@ -34,6 +35,12 @@ const themeData: Array<{
     name: "Histoire et symboles",
     description: "Les grandes dates de l'histoire de France et les symboles de la République.",
     fiches: histoire,
+  },
+  {
+    slug: "europe",
+    name: "Europe et citoyenneté européenne",
+    description: "L'Union européenne, ses institutions et les droits des citoyens européens.",
+    fiches: europe,
   },
   {
     slug: "vivre",
