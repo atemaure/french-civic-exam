@@ -4,6 +4,34 @@ import { ArticleCard } from "@/components/cards/article-card"
 import { ThemeCard } from "@/components/cards/theme-card"
 import { CheckCircle, BookOpen, MessageCircle, ArrowRight, Users, FileText, Lightbulb } from "lucide-react"
 
+export const metadata = {
+  title: "Préparation QuizCitoyen | Naturalisation Française",
+  description: "Préparez l'examen civique français simplement et efficacement. Fiches claires, conseils quotidiens et méthode simple pour réussir l'entretien de naturalisation.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Préparation QuizCitoyen | Naturalisation Française",
+    description: "Préparez l'examen civique français simplement et efficacement. Fiches claires, conseils quotidiens et méthode simple pour réussir l'entretien de naturalisation.",
+    url: "/",
+    type: "website",
+    siteName: "QuizCitoyen",
+    locale: "fr_FR",
+    images: [
+      {
+        url: "/logo.png",
+        alt: "QuizCitoyen",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Préparation QuizCitoyen | Naturalisation Française",
+    description: "Préparez l'examen civique français simplement et efficacement. Fiches claires, conseils quotidiens et méthode simple pour réussir l'entretien de naturalisation.",
+    images: ["/logo.png"],
+  },
+}
+
 // Sample data - replace with actual data fetching
 const latestArticles = [
   {

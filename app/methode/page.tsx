@@ -15,6 +15,29 @@ import {
 export const metadata = {
   title: "Méthode de préparation | Préparation QuizCitoyen",
   description: "Découvrez notre méthode en 4 étapes pour préparer efficacement l'examen civique et réussir l'entretien de naturalisation française.",
+  alternates: {
+    canonical: "/methode",
+  },
+  openGraph: {
+    title: "Méthode de préparation | Préparation QuizCitoyen",
+    description: "Découvrez notre méthode en 4 étapes pour préparer efficacement l'examen civique et réussir l'entretien de naturalisation française.",
+    url: "/methode",
+    type: "website",
+    siteName: "QuizCitoyen",
+    locale: "fr_FR",
+    images: [
+      {
+        url: "/logo.png",
+        alt: "QuizCitoyen",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Méthode de préparation | Préparation QuizCitoyen",
+    description: "Découvrez notre méthode en 4 étapes pour préparer efficacement l'examen civique et réussir l'entretien de naturalisation française.",
+    images: ["/logo.png"],
+  },
 }
 
 const steps = [

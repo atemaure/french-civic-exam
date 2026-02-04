@@ -35,11 +35,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: "article",
       siteName: "QuizCitoyen",
       locale: "fr_FR",
+      images: [
+        {
+          url: "/logo.png",
+          alt: "QuizCitoyen",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${fiche.title} | Préparation QuizCitoyen`,
       description: fiche.description,
+      images: ["/logo.png"],
     },
   }
 }
@@ -52,6 +59,32 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
     notFound()
   }
 
+  const siteUrl = "https://www.quizcitoyen.fr"
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: fiche.title,
+    description: fiche.description,
+    articleSection: fiche.theme,
+    image: `${siteUrl}/logo.png`,
+    author: {
+      "@type": "Organization",
+      name: "QuizCitoyen",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "QuizCitoyen",
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/fiches/${fiche.slug}`,
+    },
+  }
+
   const relatedFiches = getFichesByTheme(fiche.themeSlug)
     .filter((f) => f.slug !== fiche.slug)
     .slice(0, 3)
@@ -59,6 +92,10 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
   return (
     <div className="py-12 sm:py-16">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* Back link */}
         <div className="mb-8">
           <Button variant="ghost" asChild className="gap-2 pl-0 hover:bg-transparent hover:text-primary">

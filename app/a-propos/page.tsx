@@ -14,6 +14,29 @@ import {
 export const metadata = {
   title: "À propos | Préparation QuizCitoyen",
   description: "Découvrez notre mission : accompagner les candidats à la naturalisation française avec une approche pédagogique simple et rassurante.",
+  alternates: {
+    canonical: "/a-propos",
+  },
+  openGraph: {
+    title: "À propos | Préparation QuizCitoyen",
+    description: "Découvrez notre mission : accompagner les candidats à la naturalisation française avec une approche pédagogique simple et rassurante.",
+    url: "/a-propos",
+    type: "website",
+    siteName: "QuizCitoyen",
+    locale: "fr_FR",
+    images: [
+      {
+        url: "/logo.png",
+        alt: "QuizCitoyen",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "À propos | Préparation QuizCitoyen",
+    description: "Découvrez notre mission : accompagner les candidats à la naturalisation française avec une approche pédagogique simple et rassurante.",
+    images: ["/logo.png"],
+  },
 }
 
 const values = [
