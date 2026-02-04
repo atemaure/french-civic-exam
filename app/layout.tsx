@@ -13,9 +13,6 @@ export const metadata: Metadata = {
   description: 'Préparez l\'examen civique français simplement et efficacement. Fiches claires, conseils quotidiens et méthode simple pour réussir l\'entretien de naturalisation.',
   generator: 'v0.app',
   metadataBase: new URL('https://www.quizcitoyen.fr'),
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     type: 'website',
     url: 'https://www.quizcitoyen.fr',
@@ -23,11 +20,18 @@ export const metadata: Metadata = {
     description: 'Préparez l\'examen civique français simplement et efficacement. Fiches claires, conseils quotidiens et méthode simple pour réussir l\'entretien de naturalisation.',
     siteName: 'QuizCitoyen',
     locale: 'fr_FR',
+    images: [
+      {
+        url: '/logo.png',
+        alt: 'QuizCitoyen',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Préparation QuizCitoyen | Naturalisation Française',
     description: 'Préparez l\'examen civique français simplement et efficacement. Fiches claires, conseils quotidiens et méthode simple pour réussir l\'entretien de naturalisation.',
+    images: ['/logo.png'],
   },
   icons: {
     icon: [
