@@ -9,6 +9,12 @@ const footerLinks = {
     { name: "Méthode", href: "/methode" },
     { name: "À propos", href: "/a-propos" },
   ],
+  resources: [
+    { name: "FAQ", href: "/faq" },
+    { name: "Glossaire", href: "/glossaire" },
+    { name: "Sources", href: "/sources" },
+    { name: "Méthodologie", href: "/methodologie" },
+  ],
   themes: [
     { name: "Valeurs de la République", href: "/fiches?theme=valeurs" },
     { name: "Droits et devoirs", href: "/fiches?theme=droits" },
@@ -48,6 +54,23 @@ export function SiteFooter() {
             <h3 className="mb-4 text-sm font-semibold text-foreground">Navigation</h3>
             <ul className="space-y-3">
               {footerLinks.navigation.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+
+          <div>
+            <h3 className="mb-4 text-sm font-semibold text-foreground">Ressources</h3>
+            <ul className="space-y-3">
+              {footerLinks.resources.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}

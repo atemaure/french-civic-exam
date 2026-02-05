@@ -1,6 +1,10 @@
 import Link from "next/link"
+import { createMetadata } from "@/lib/seo/metadata"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Breadcrumbs } from "@/components/seo/breadcrumbs"
+import { JsonLd } from "@/components/seo/json-ld"
+import { breadcrumbJsonLd, howToJsonLd } from "@/lib/seo/jsonld"
 import { 
   BookOpen, 
   Brain, 
@@ -12,33 +16,11 @@ import {
   Clock
 } from "lucide-react"
 
-export const metadata = {
-  title: "Méthode de préparation | Préparation QuizCitoyen",
+export const metadata = createMetadata({
+  title: "Méthode de préparation",
   description: "Découvrez notre méthode en 4 étapes pour préparer efficacement l'examen civique et réussir l'entretien de naturalisation française.",
-  alternates: {
-    canonical: "/methode",
-  },
-  openGraph: {
-    title: "Méthode de préparation | Préparation QuizCitoyen",
-    description: "Découvrez notre méthode en 4 étapes pour préparer efficacement l'examen civique et réussir l'entretien de naturalisation française.",
-    url: "/methode",
-    type: "website",
-    siteName: "QuizCitoyen",
-    locale: "fr_FR",
-    images: [
-      {
-        url: "/logo.png",
-        alt: "QuizCitoyen",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Méthode de préparation | Préparation QuizCitoyen",
-    description: "Découvrez notre méthode en 4 étapes pour préparer efficacement l'examen civique et réussir l'entretien de naturalisation française.",
-    images: ["/logo.png"],
-  },
-}
+  path: "/methode",
+})
 
 const steps = [
   {
@@ -117,6 +99,22 @@ export default function MethodePage() {
   return (
     <div className="py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <JsonLd data={[
+          breadcrumbJsonLd([
+            { name: "Accueil", url: "/" },
+            { name: "Méthode", url: "/methode" },
+          ]),
+          howToJsonLd({
+            name: "Méthode de préparation à l'entretien civique",
+            description: "Une approche en 4 étapes pour se préparer sereinement à l'entretien de naturalisation.",
+            totalTime: "P6W",
+            steps: steps.map((step) => ({ name: step.title, text: step.description })),
+          }),
+        ]} />
+        <Breadcrumbs items={[
+          { label: "Accueil", href: "/" },
+          { label: "Méthode" },
+        ]} />
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
