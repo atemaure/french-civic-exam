@@ -24,7 +24,7 @@ export function ThemeCard({ title, description, slug, ficheCount }: ThemeCardPro
 
   return (
     <Card className="group h-full transition-shadow hover:shadow-md">
-      <Link href={`/fiches?theme=${slug}`} className="block h-full">
+      <Link href={`/themes/${slug}`} className="block h-full">
         <CardContent className="flex h-full flex-col p-6">
           <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
             <Icon className="h-6 w-6 text-primary" />

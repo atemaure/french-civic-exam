@@ -1,14 +1,15 @@
 import type { MetadataRoute } from "next"
 
-const baseUrl = "https://www.quizcitoyen.fr"
+import { SITE_URL, SHOULD_INDEX } from "@/lib/seo/config"
 
 export default function robots(): MetadataRoute.Robots {
+  const rules = SHOULD_INDEX
+    ? [{ userAgent: "*", allow: "/" }]
+    : [{ userAgent: "*", disallow: "/" }]
+
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
+    rules,
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   }
 }

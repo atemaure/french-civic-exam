@@ -1,33 +1,15 @@
 import { articles } from "@/lib/data/articles"
+import { createMetadata } from "@/lib/seo/metadata"
 import { ArticleCard } from "@/components/cards/article-card"
+import { Breadcrumbs } from "@/components/seo/breadcrumbs"
+import { JsonLd } from "@/components/seo/json-ld"
+import { breadcrumbJsonLd } from "@/lib/seo/jsonld"
 
-export const metadata = {
-  title: "Articles et conseils | Préparation QuizCitoyen",
+export const metadata = createMetadata({
+  title: "Articles et conseils",
   description: "Articles pédagogiques et conseils quotidiens pour préparer l'examen civique et l'entretien de naturalisation française.",
-  alternates: {
-    canonical: "/articles",
-  },
-  openGraph: {
-    title: "Articles et conseils | Préparation QuizCitoyen",
-    description: "Articles pédagogiques et conseils quotidiens pour préparer l'examen civique et l'entretien de naturalisation française.",
-    url: "/articles",
-    type: "website",
-    siteName: "QuizCitoyen",
-    locale: "fr_FR",
-    images: [
-      {
-        url: "/logo.png",
-        alt: "QuizCitoyen",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Articles et conseils | Préparation QuizCitoyen",
-    description: "Articles pédagogiques et conseils quotidiens pour préparer l'examen civique et l'entretien de naturalisation française.",
-    images: ["/logo.png"],
-  },
-}
+  path: "/articles",
+})
 
 const categories = [
   { name: "Tous", value: "" },
@@ -42,6 +24,14 @@ export default function ArticlesPage() {
   return (
     <div className="py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <JsonLd data={breadcrumbJsonLd([
+          { name: "Accueil", url: "/" },
+          { name: "Articles", url: "/articles" },
+        ])} />
+        <Breadcrumbs items={[
+          { label: "Accueil", href: "/" },
+          { label: "Articles" },
+        ]} />
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">

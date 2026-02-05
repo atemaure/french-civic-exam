@@ -1,9 +1,8 @@
 import type { MetadataRoute } from "next"
 
-import { articles } from "@/lib/data/articles"
-import { fiches } from "@/lib/data/fiches"
-
-const baseUrl = "https://www.quizcitoyen.fr"
+import { articles, toISODate } from "@/lib/data/articles"
+import { fiches, themes } from "@/lib/data/fiches"
+import { SITE_URL } from "@/lib/seo/config"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -12,20 +11,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/articles",
     "/methode",
     "/a-propos",
+    "/themes",
+    "/faq",
+    "/sources",
+    "/glossaire",
+    "/methodologie",
   ].map((path) => ({
-    url: `${baseUrl}${path}`,
+    url: `${SITE_URL}${path}`,
     lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: path === "" ? 1 : 0.7,
+  }))
+
+  const themeRoutes = themes.map((theme) => ({
+    url: `${SITE_URL}/themes/${theme.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.6,
   }))
 
   const ficheRoutes = fiches.map((fiche) => ({
-    url: `${baseUrl}/fiches/${fiche.slug}`,
+    url: `${SITE_URL}/fiches/${fiche.slug}`,
     lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: fiche.isEssential ? 0.8 : 0.6,
   }))
 
-  const articleRoutes = articles.map((article) => ({
-    url: `${baseUrl}/articles/${article.slug}`,
-    lastModified: new Date(),
-  }))
+  const articleRoutes = articles.map((article) => {
+    const dateIso = toISODate(article.date)
+    return {
+      url: `${SITE_URL}/articles/${article.slug}`,
+      lastModified: dateIso ? new Date(dateIso) : new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    }
+  })
 
-  return [...staticRoutes, ...ficheRoutes, ...articleRoutes]
+  return [...staticRoutes, ...themeRoutes, ...ficheRoutes, ...articleRoutes]
 }
