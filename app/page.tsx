@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { createMetadata } from "@/lib/seo/metadata"
+import { themes } from "@/lib/data/fiches"
 import { Button } from "@/components/ui/button"
 import { ArticleCard } from "@/components/cards/article-card"
 import { ThemeCard } from "@/components/cards/theme-card"
@@ -34,39 +35,6 @@ const latestArticles = [
     date: "10 janvier 2026",
     slug: "role-president-republique",
     category: "Institutions",
-  },
-]
-
-const themes = [
-  {
-    title: "Principes et valeurs",
-    description: "Liberté, Égalité, Fraternité et les valeurs fondamentales de la République française.",
-    slug: "valeurs",
-    ficheCount: 12,
-  },
-  {
-    title: "Droits et devoirs",
-    description: "Les droits fondamentaux des citoyens et leurs devoirs envers la République.",
-    slug: "droits",
-    ficheCount: 8,
-  },
-  {
-    title: "Institutions françaises",
-    description: "Le fonctionnement de l'État, le Parlement, le Gouvernement et les collectivités.",
-    slug: "institutions",
-    ficheCount: 15,
-  },
-  {
-    title: "Histoire et symboles",
-    description: "Les grandes dates de l'histoire de France et les symboles de la République.",
-    slug: "histoire",
-    ficheCount: 10,
-  },
-  {
-    title: "Vivre en France",
-    description: "La vie quotidienne, la laïcité et les principes du vivre-ensemble.",
-    slug: "vivre",
-    ficheCount: 7,
   },
 ]
 
@@ -207,12 +175,18 @@ export default function HomePage() {
               Les grandes thématiques de l'examen civique
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Explorez les cinq domaines essentiels à maîtriser
+              Explorez les thématiques essentielles à maîtriser
             </p>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {themes.map((theme) => (
-              <ThemeCard key={theme.slug} {...theme} />
+              <ThemeCard
+                key={theme.slug}
+                title={theme.name}
+                description={theme.description}
+                slug={theme.slug}
+                ficheCount={theme.ficheCount}
+              />
             ))}
           </div>
           <div className="mt-10 text-center">
