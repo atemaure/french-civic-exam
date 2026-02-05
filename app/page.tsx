@@ -3,6 +3,7 @@ import { createMetadata } from "@/lib/seo/metadata"
 import { Button } from "@/components/ui/button"
 import { ArticleCard } from "@/components/cards/article-card"
 import { ThemeCard } from "@/components/cards/theme-card"
+import { AppCtaButton } from "@/components/app-cta-button"
 import { CheckCircle, BookOpen, MessageCircle, ArrowRight, Users, FileText, Lightbulb } from "lucide-react"
 
 export const metadata = createMetadata({
@@ -106,7 +107,6 @@ const benefitsItems = [
 ]
 
 export default function HomePage() {
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://app.quizcitoyen.fr"
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -132,15 +132,7 @@ export default function HomePage() {
                   Voir les fiches essentielles
                 </Link>
               </Button>
-              <Button
-                size="lg"
-                asChild
-                className="bg-emerald-600 text-white hover:bg-emerald-700"
-              >
-                <Link href={appUrl} target="_blank" rel="noopener noreferrer">
-                  Accéder à l'app QuizCitoyen
-                </Link>
-              </Button>
+              <AppCtaButton size="lg" />
             </div>
           </div>
         </div>
