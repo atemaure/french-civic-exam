@@ -58,15 +58,27 @@ export const baseMetadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        type: "image/png",
+        url: "/favicon.ico",
+        type: "image/x-icon",
       },
       {
-        url: "/icon-dark-32x32.png",
+        url: "/favicon-32x32.png",
         type: "image/png",
+        sizes: "32x32",
+      },
+      {
+        url: "/favicon-48x48.png",
+        type: "image/png",
+        sizes: "48x48",
+      },
+      {
+        url: "/favicon-16x16.png",
+        type: "image/png",
+        sizes: "16x16",
       },
     ],
-    apple: "/apple-icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   robots: {
     index: SHOULD_INDEX,

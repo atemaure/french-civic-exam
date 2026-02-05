@@ -12,7 +12,7 @@
 - JSON-LD réutilisable pour WebSite/Organization, BreadcrumbList, Article, LearningResource, FAQPage, HowTo, Glossaire.
 - Breadcrumbs UI + JSON-LD sur pages clés.
 - Ajout des pages LLMSEO stables: `/faq`, `/sources`, `/glossaire`, `/methodologie`.
-- Création des pages thématiques `/themes` + `/themes/[slug]` + liens internes.
+- Suppression des pages thématiques `/themes` (retour sur `/fiches?theme=...`).
 - Table des matières automatique sur les articles.
 - Sitemap + robots mis à jour et sensibles à l’environnement (`SHOULD_INDEX`).
 
@@ -21,8 +21,8 @@
 - `app/glossaire/page.tsx`
 - `app/methodologie/page.tsx`
 - `app/sources/page.tsx`
-- `app/themes/page.tsx`
-- `app/themes/[slug]/page.tsx`
+- (supprimés) `app/themes/page.tsx`
+- (supprimés) `app/themes/[slug]/page.tsx`
 - `components/seo/breadcrumbs.tsx`
 - `components/seo/json-ld.tsx`
 - `lib/seo/config.ts`
@@ -41,6 +41,7 @@
 - `app/a-propos/page.tsx`
 - `app/robots.ts`
 - `app/sitemap.ts`
+- `app/articles/page.tsx` (filtrage par `?category=...`, H1 dynamique, `noindex`)
 - `components/cards/theme-card.tsx`
 - `components/site-header.tsx`
 - `components/site-footer.tsx`
@@ -58,4 +59,5 @@
 ## Notes d’implémentation
 - Indexation contrôlée par `SHOULD_INDEX` (prod vs preview). Configurez `NEXT_PUBLIC_SITE_URL` en production.
 - JSON-LD injecté globalement dans le layout + par type de page.
-- Les liens thématiques basculent vers `/themes/*` pour éviter les URLs à paramètres.
+- Les liens thématiques utilisent `/fiches?theme=...` (plus de pages `/themes`).
+- Filtrage articles: pages `?category=...` non indexées pour éviter le duplicate content.

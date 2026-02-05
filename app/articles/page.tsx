@@ -6,12 +6,6 @@ import { Breadcrumbs } from "@/components/seo/breadcrumbs"
 import { JsonLd } from "@/components/seo/json-ld"
 import { breadcrumbJsonLd } from "@/lib/seo/jsonld"
 
-export const metadata = createMetadata({
-  title: "Articles et conseils",
-  description: "Articles pédagogiques et conseils quotidiens pour préparer l'examen civique et l'entretien de naturalisation française.",
-  path: "/articles",
-})
-
 const categories = [
   { name: "Tous", value: "" },
   { name: "Conseils", value: "conseils" },
@@ -23,6 +17,20 @@ const categories = [
 
 interface PageProps {
   searchParams: Promise<{ category?: string }>
+}
+
+export async function generateMetadata({ searchParams }: PageProps) {
+  const params = await searchParams
+  const selectedCategory = params.category ?? ""
+  const selected = categories.find((category) => category.value === selectedCategory)
+  const title = selected && selected.value ? `Articles — ${selected.name}` : "Articles et conseils"
+
+  return createMetadata({
+    title,
+    description: "Articles pédagogiques et conseils quotidiens pour préparer l'examen civique et l'entretien de naturalisation française.",
+    path: "/articles",
+    noIndex: Boolean(selected && selected.value),
+  })
 }
 
 export default async function ArticlesPage({ searchParams }: PageProps) {
@@ -46,7 +54,7 @@ export default async function ArticlesPage({ searchParams }: PageProps) {
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Articles et conseils quotidiens
+            {selected && selected.value ? `Articles — ${selected.name}` : "Articles et conseils quotidiens"}
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">
             Des articles pédagogiques pour progresser chaque jour dans votre préparation 

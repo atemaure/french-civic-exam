@@ -1,6 +1,7 @@
 import {
   absoluteUrl,
   OG_IMAGE,
+  ORGANIZATION_SAME_AS,
   SITE_LANGUAGE,
   SITE_NAME,
   SITE_URL,
@@ -58,6 +59,7 @@ export function organizationJsonLd() {
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
     url: SITE_URL,
+    sameAs: ORGANIZATION_SAME_AS.length ? ORGANIZATION_SAME_AS : undefined,
     logo: {
       "@type": "ImageObject",
       url: absoluteUrl(OG_IMAGE),
