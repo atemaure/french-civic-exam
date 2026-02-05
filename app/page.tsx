@@ -75,6 +75,9 @@ const benefitsItems = [
 ]
 
 export default function HomePage() {
+  const mainThemeSlugs = ["valeurs", "droits", "institutions", "histoire", "vivre"]
+  const mainThemes = themes.filter((theme) => mainThemeSlugs.includes(theme.slug))
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -179,7 +182,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {themes.map((theme) => (
+            {mainThemes.map((theme) => (
               <ThemeCard
                 key={theme.slug}
                 title={theme.name}

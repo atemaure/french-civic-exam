@@ -68,7 +68,7 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
   const breadcrumbItems = [
     { name: "Accueil", url: "/" },
     { name: "Fiches", url: "/fiches" },
-    { name: fiche.theme, url: `/themes/${fiche.themeSlug}` },
+    { name: fiche.theme, url: `/fiches?theme=${fiche.themeSlug}` },
     { name: fiche.title, url: `/fiches/${fiche.slug}` },
   ]
 
@@ -92,7 +92,7 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
           items={[
             { label: "Accueil", href: "/" },
             { label: "Fiches", href: "/fiches" },
-            { label: fiche.theme, href: `/themes/${fiche.themeSlug}` },
+            { label: fiche.theme, href: `/fiches?theme=${fiche.themeSlug}` },
             { label: fiche.title },
           ]}
         />
@@ -108,7 +108,7 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
         <header className="mb-10">
           <div className="mb-4 flex flex-wrap items-center gap-3">
             <Link
-              href={`/themes/${fiche.themeSlug}`}
+              href={`/fiches?theme=${fiche.themeSlug}`}
               className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary hover:bg-primary/20"
             >
               {fiche.theme}
@@ -204,7 +204,7 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
                   Retrouvez toutes les fiches liées à {fiche.theme.toLowerCase()} et les repères essentiels.
                 </p>
                 <Button variant="outline" asChild className="bg-transparent">
-                  <Link href={`/themes/${fiche.themeSlug}`}>Voir la thématique</Link>
+                  <Link href={`/fiches?theme=${fiche.themeSlug}`}>Voir la thématique</Link>
                 </Button>
               </CardContent>
             </Card>

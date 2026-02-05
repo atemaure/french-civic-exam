@@ -5,7 +5,6 @@ const footerLinks = {
   navigation: [
     { name: "Accueil", href: "/" },
     { name: "Fiches pratiques", href: "/fiches" },
-    { name: "Thématiques", href: "/themes" },
     { name: "Articles", href: "/articles" },
     { name: "Méthode", href: "/methode" },
     { name: "À propos", href: "/a-propos" },
@@ -17,10 +16,10 @@ const footerLinks = {
     { name: "Méthodologie", href: "/methodologie" },
   ],
   themes: [
-    { name: "Valeurs de la République", href: "/themes/valeurs" },
-    { name: "Droits et devoirs", href: "/themes/droits" },
-    { name: "Institutions", href: "/themes/institutions" },
-    { name: "Histoire et symboles", href: "/themes/histoire" },
+    { name: "Valeurs de la République", href: "/fiches?theme=valeurs" },
+    { name: "Droits et devoirs", href: "/fiches?theme=droits" },
+    { name: "Institutions", href: "/fiches?theme=institutions" },
+    { name: "Histoire et symboles", href: "/fiches?theme=histoire" },
   ],
 }
 

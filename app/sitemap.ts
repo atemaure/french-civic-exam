@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next"
 
 import { articles, toISODate } from "@/lib/data/articles"
-import { fiches, themes } from "@/lib/data/fiches"
+import { fiches } from "@/lib/data/fiches"
 import { SITE_URL } from "@/lib/seo/config"
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -11,7 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/articles",
     "/methode",
     "/a-propos",
-    "/themes",
     "/faq",
     "/sources",
     "/glossaire",
@@ -21,13 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "weekly",
     priority: path === "" ? 1 : 0.7,
-  }))
-
-  const themeRoutes = themes.map((theme) => ({
-    url: `${SITE_URL}/themes/${theme.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.6,
   }))
 
   const ficheRoutes = fiches.map((fiche) => ({
@@ -47,5 +39,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
-  return [...staticRoutes, ...themeRoutes, ...ficheRoutes, ...articleRoutes]
+  return [...staticRoutes, ...ficheRoutes, ...articleRoutes]
 }
