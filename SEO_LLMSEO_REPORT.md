@@ -3,7 +3,7 @@
 ## Audit rapide
 - Framework: Next.js 16 (App Router, dossier `app/`).
 - Routage: routes statiques + SSG via `generateStaticParams` (articles, fiches, thèmes).
-- Données: contenu éditorial en dur dans `lib/data/articles.ts` et `lib/data/fiches/*`.
+- Données: contenu éditorial en dur dans `lib/data/articles/` et `lib/data/fiches/*`.
 - SEO existant avant: metadata basique dans `app/layout.tsx` + par page, `app/robots.ts`, `app/sitemap.ts`.
 - Génération: SSG pour `articles/[slug]`, `fiches/[slug]`, `themes/[slug]`, reste en statique.
 
