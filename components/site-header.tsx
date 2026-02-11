@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { AppCtaButton } from "@/components/app-cta-button"
 import { Menu, X } from "lucide-react"
 
 const navigation = [
@@ -50,9 +50,7 @@ export function SiteHeader() {
         </div>
 
         <div className="hidden md:flex">
-          <Button asChild>
-            <Link href="/fiches">Commencer la préparation</Link>
-          </Button>
+          <AppCtaButton size="default" />
         </div>
 
         {/* Mobile menu button */}
@@ -87,11 +85,11 @@ export function SiteHeader() {
               </Link>
             ))}
             <div className="pt-2">
-              <Button asChild className="w-full">
-                <Link href="/fiches" onClick={() => setMobileMenuOpen(false)}>
-                  Commencer la préparation
-                </Link>
-              </Button>
+              <AppCtaButton
+                size="default"
+                className="w-full"
+                onClick={() => setMobileMenuOpen(false)}
+              />
             </div>
           </div>
         </div>

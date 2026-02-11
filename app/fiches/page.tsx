@@ -1,37 +1,19 @@
 import Link from "next/link"
+import { createMetadata } from "@/lib/seo/metadata"
 import { fiches, themes, getEssentialFiches, getFichesByTheme } from "@/lib/data/fiches"
 import { FicheCard } from "@/components/cards/fiche-card"
 import { ThemeCard } from "@/components/cards/theme-card"
 import { Button } from "@/components/ui/button"
+import { Breadcrumbs } from "@/components/seo/breadcrumbs"
+import { JsonLd } from "@/components/seo/json-ld"
+import { breadcrumbJsonLd } from "@/lib/seo/jsonld"
 import { Star } from "lucide-react"
 
-export const metadata = {
-  title: "Fiches pratiques | Préparation QuizCitoyen",
+export const metadata = createMetadata({
+  title: "Fiches pratiques",
   description: "Fiches pratiques organisées par thématique pour préparer l'examen civique et l'entretien de naturalisation française.",
-  alternates: {
-    canonical: "/fiches",
-  },
-  openGraph: {
-    title: "Fiches pratiques | Préparation QuizCitoyen",
-    description: "Fiches pratiques organisées par thématique pour préparer l'examen civique et l'entretien de naturalisation française.",
-    url: "/fiches",
-    type: "website",
-    siteName: "QuizCitoyen",
-    locale: "fr_FR",
-    images: [
-      {
-        url: "/logo.png",
-        alt: "QuizCitoyen",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Fiches pratiques | Préparation QuizCitoyen",
-    description: "Fiches pratiques organisées par thématique pour préparer l'examen civique et l'entretien de naturalisation française.",
-    images: ["/logo.png"],
-  },
-}
+  path: "/fiches",
+})
 
 interface PageProps {
   searchParams: Promise<{ theme?: string; essential?: string }>
@@ -57,6 +39,14 @@ export default async function FichesPage({ searchParams }: PageProps) {
   return (
     <div className="py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <JsonLd data={breadcrumbJsonLd([
+          { name: "Accueil", url: "/" },
+          { name: "Fiches", url: "/fiches" },
+        ])} />
+        <Breadcrumbs items={[
+          { label: "Accueil", href: "/" },
+          { label: "Fiches" },
+        ]} />
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
