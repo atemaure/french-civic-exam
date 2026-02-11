@@ -40,7 +40,7 @@ Site statique (Next.js App Router) pour préparer l’examen civique français. 
 - Contenu statique (définitions, points clés, exemples, tips)
 
 ### Articles
-`lib/data/articles.ts`
+`lib/data/articles/`
 - Type `Article`
 - Helpers : `getArticleBySlug`, `getLatestArticles`, `getArticlesByCategory`
 - Contenu en pseudo-markdown stocké dans `content` + parsing manuel dans `app/articles/[slug]/page.tsx`
@@ -91,7 +91,7 @@ Commandes principales :
 
 ## 11) Repères pour contribuer
 - Ajouter une fiche : `lib/data/fiches.ts`
-- Ajouter un article : `lib/data/articles.ts`
+- Ajouter un article : `lib/data/articles/`
 - Modifier la navigation : `components/site-header.tsx` / `components/site-footer.tsx`
 - Thèmes & couleurs : `app/globals.css`
 
