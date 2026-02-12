@@ -42,7 +42,7 @@ En 2026, le Président de la République française est Emmanuel Macron, élu po
   `,
   date: "10 janvier 2026",
   category: "Institutions",
-  readingTime: "6 min",
+  readingTime: "2 min",
   keyPoints: [
     "Le Président est élu pour 5 ans au suffrage universel direct",
     "Il est chef de l'État, garant de la Constitution et chef des armées",

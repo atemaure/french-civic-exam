@@ -60,7 +60,7 @@ Il reste une figure importante pour comprendre la modernisation de la France au 
   `,
   date: "11 février 2026",
   category: "Histoire",
-  readingTime: "5 min",
+  readingTime: "2 min",
   keyPoints: [
     "Premier président élu au suffrage universel masculin en 1848",
     "Devient empereur en 1852 et fonde le Second Empire",

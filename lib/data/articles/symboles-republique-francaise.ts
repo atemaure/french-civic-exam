@@ -42,7 +42,7 @@ Le coq est un symbole ancien de la France. Il représente la fierté et la vigil
   `,
   date: "8 janvier 2026",
   category: "Histoire",
-  readingTime: "5 min",
+  readingTime: "2 min",
   keyPoints: [
     "Le drapeau tricolore symbolise l'union du peuple et de la monarchie",
     "La Marseillaise est l'hymne national depuis 1879",

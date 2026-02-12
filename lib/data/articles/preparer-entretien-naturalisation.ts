@@ -38,7 +38,7 @@ Durant l'entretien, vous pourrez être interrogé sur :
   `,
   date: "15 janvier 2026",
   category: "Conseils",
-  readingTime: "5 min",
+  readingTime: "2 min",
   keyPoints: [
     "L'entretien évalue votre connaissance de la France et votre niveau de français",
     "Comprenez les valeurs plutôt que de les mémoriser",
