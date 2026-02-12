@@ -48,6 +48,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <main className="min-h-screen">{children}</main>
         <SiteFooter />
         <Analytics />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){'use strict';document.addEventListener('contextmenu',function(e){e.preventDefault()});document.addEventListener('keydown',function(e){var k=e.key.toLowerCase();var isF12=e.key==='F12';var isCtrlShiftI=e.ctrlKey&&e.shiftKey&&k==='i';var isCtrlShiftJ=e.ctrlKey&&e.shiftKey&&k==='j';var isCtrlU=e.ctrlKey&&k==='u';var isCtrlS=e.ctrlKey&&k==='s';if(isF12||isCtrlShiftI||isCtrlShiftJ||isCtrlU||isCtrlS){e.preventDefault();e.stopPropagation()}})})();`,
+          }}
+        />
       </body>
     </html>
   )
