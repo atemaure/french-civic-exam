@@ -6,11 +6,13 @@ import { article as laicite_france_explication } from "./laicite-france-explicat
 import { article as droits_devoirs_citoyen_francais } from "./droits-devoirs-citoyen-francais"
 import { article as napoleon_premier } from "./napoleon-premier"
 import { article as napoleon_trois } from "./napoleon-trois"
+import { article as questions_mise_en_situation_entretien_civique } from "./questions-mise-en-situation-entretien-civique"
 
 export type { Article } from "./types"
 export { toISODate } from "./utils"
 
 export const articles = [
+  questions_mise_en_situation_entretien_civique,
   napoleon_trois,
   napoleon_premier,
   preparer_entretien_naturalisation,
