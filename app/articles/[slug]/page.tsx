@@ -235,7 +235,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       {/* Hero header with colored background */}
       <div className="border-b border-border bg-secondary/50">
-        <div className="mx-auto max-w-3xl px-4 pb-12 pt-8 sm:px-6 sm:pb-16 sm:pt-12 lg:px-8">
+        <div className="mx-auto max-w-3xl px-4 pb-12 pt-6 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8">
           <Breadcrumbs
             items={[
               { label: "Accueil", href: "/" },
@@ -244,7 +244,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             ]}
           />
 
-          <div className="mb-6 mt-4">
+          <div className="mb-4 mt-3">
             <Button variant="ghost" size="sm" asChild className="gap-2 px-0 text-muted-foreground hover:bg-transparent hover:text-primary">
               <Link href="/articles">
                 <ArrowLeft className="h-4 w-4" />
@@ -254,7 +254,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
 
           <header>
-            <div className="mb-5 flex flex-wrap items-center gap-3">
+            <div className="mb-3 flex flex-wrap items-center gap-3">
               <span className="inline-flex items-center rounded-full bg-primary/10 px-3.5 py-1 text-xs font-semibold tracking-wide text-primary">
                 {article.category}
               </span>
@@ -269,10 +269,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 </span>
               </div>
             </div>
-            <h1 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
+            <h1 className="text-balance text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
               {article.title}
             </h1>
-            <p className="mt-5 text-pretty text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
               {article.excerpt}
             </p>
           </header>
@@ -281,7 +281,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         {/* Key points section */}
-        <section className="-mt-8 mb-14 overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-sm">
+        <section className="-mt-8 mb-10 overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-sm">
           <div className="border-b border-primary/10 bg-primary/5 px-6 py-4 sm:px-8">
             <h2 className="flex items-center gap-2.5 text-base font-semibold text-foreground">
               <CheckCircle className="h-5 w-5 text-primary" />
@@ -304,21 +304,21 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
         {/* Table of contents */}
         {toc.length >= 2 && (
-          <section className="mb-14 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+          <section className="mb-10 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
             <div className="border-b border-border bg-secondary/50 px-6 py-4 sm:px-8">
               <h2 className="flex items-center gap-2.5 text-base font-semibold text-foreground">
                 <List className="h-5 w-5 text-muted-foreground" />
                 Sommaire
               </h2>
             </div>
-            <div className="p-6 sm:p-8">
+            <div className="px-6 py-4 sm:px-8 sm:py-5">
               <nav aria-label="Table des matieres">
-                <ul className="flex flex-col gap-0.5">
+                <ul className="flex flex-col">
                   {toc.map((item) => (
                     <li key={item.id}>
                       <Link
                         href={`#${item.id}`}
-                        className={`flex items-center rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-secondary/80 hover:text-foreground ${
+                        className={`flex items-center rounded-lg px-3 py-2 text-sm transition-colors hover:bg-secondary/80 hover:text-foreground ${
                           item.level === "h3"
                             ? "ml-5 text-muted-foreground"
                             : "font-medium text-foreground"
@@ -341,16 +341,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         )}
 
         {/* Article content */}
-        <div className="mb-14">
+        <div className="mb-10">
           {blocks.map((block, index) => {
             if (block.type === "h2") {
               return (
                 <h2
                   key={index}
                   id={headingIds.get(index)}
-                  className="mb-5 mt-16 flex items-center gap-3 text-2xl font-bold tracking-tight text-foreground first:mt-0"
+                  className="mb-3 mt-10 flex items-center gap-3 text-xl font-bold tracking-tight text-foreground first:mt-0 sm:text-2xl"
                 >
-                  <span className="h-7 w-1 rounded-full bg-primary" aria-hidden="true" />
+                  <span className="h-6 w-1 rounded-full bg-primary" aria-hidden="true" />
                   {renderInlineMarkdown(block.text)}
                 </h2>
               )
@@ -360,7 +360,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 <h3
                   key={index}
                   id={headingIds.get(index)}
-                  className="mb-4 mt-10 text-lg font-semibold text-foreground"
+                  className="mb-2 mt-7 text-base font-semibold text-foreground sm:text-lg"
                 >
                   {renderInlineMarkdown(block.text)}
                 </h3>
@@ -368,18 +368,18 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             }
             if (block.type === "p") {
               return (
-                <p key={index} className="mb-5 text-base leading-[1.75] text-muted-foreground">
+                <p key={index} className="mb-3 text-[0.938rem] leading-relaxed text-muted-foreground">
                   {renderInlineMarkdown(block.text)}
                 </p>
               )
             }
             if (block.type === "ul") {
               return (
-                <ul key={index} className="mb-6 flex flex-col gap-2 pl-1">
+                <ul key={index} className="mb-4 flex flex-col gap-0.5 pl-1">
                   {block.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-3 rounded-lg px-3 py-2 transition-colors hover:bg-secondary/40">
-                      <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      <span className="text-base leading-[1.75]">
+                    <li key={itemIndex} className="flex items-start gap-2.5 rounded-md px-2.5 py-1.5 transition-colors hover:bg-secondary/40">
+                      <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span className="text-[0.938rem] leading-relaxed">
                         {item.type === "label" ? (
                           <>
                             <strong className="font-semibold text-foreground">{item.label}</strong>
@@ -396,13 +396,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             }
             if (block.type === "ol") {
               return (
-                <ol key={index} className="mb-6 flex flex-col gap-3 pl-1">
+                <ol key={index} className="mb-4 flex flex-col gap-2 pl-1">
                   {block.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-4 rounded-xl border border-border/60 bg-card p-5 shadow-sm transition-colors hover:border-primary/20 hover:shadow-md hover:shadow-primary/5">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">
+                    <li key={itemIndex} className="flex items-start gap-3 rounded-xl border border-border/60 bg-card p-4 shadow-sm transition-colors hover:border-primary/20">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary text-xs font-bold text-primary-foreground">
                         {item.number ?? itemIndex + 1}
                       </span>
-                      <span className="text-base leading-[1.75]">
+                      <span className="text-[0.938rem] leading-relaxed">
                         {item.type === "label" ? (
                           <>
                             <strong className="font-semibold text-foreground">{item.label}</strong>
@@ -423,7 +423,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
         {/* Oral tip */}
         {article.oralTip && (
-          <section className="mb-14 overflow-hidden rounded-2xl border border-accent/20 bg-card shadow-sm">
+          <section className="mb-10 overflow-hidden rounded-2xl border border-accent/20 bg-card shadow-sm">
             <div className="flex items-center gap-2.5 border-b border-accent/10 bg-accent/5 px-6 py-4 sm:px-8">
               <Lightbulb className="h-5 w-5 text-accent" />
               <h2 className="text-base font-semibold text-foreground">
@@ -492,7 +492,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         )}
 
         {/* Sources and back link */}
-        <div className="mt-12 flex flex-col items-center gap-6 text-center">
+        <div className="mt-10 flex flex-col items-center gap-4 text-center">
           <div className="flex flex-col items-center gap-2">
             <p className="text-sm text-muted-foreground">Pour des sources officielles, consultez notre page de references.</p>
             <Link href="/sources" className="text-sm font-medium text-primary hover:underline">
