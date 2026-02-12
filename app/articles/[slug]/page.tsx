@@ -19,7 +19,25 @@ import {
   BookOpen,
   ArrowRight,
   List,
+  Lightbulb,
 } from "lucide-react"
+
+/* ── Inline-markdown renderer ─────────────────────────────────── */
+/* Converts **bold** fragments inside a string into <strong> tags */
+function renderInlineMarkdown(text: string): React.ReactNode {
+  const parts = text.split(/(\*\*.*?\*\*)/g)
+  if (parts.length === 1) return text
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={i} className="font-semibold text-foreground">
+          {part.slice(2, -2)}
+        </strong>
+      )
+    }
+    return part
+  })
+}
 
 type ListItem = {
   type: "label" | "plain"
@@ -102,6 +120,14 @@ function parseArticleContent(content: string): ContentBlock[] {
         label: numberedMatch[2],
         text: numberedMatch[3],
       })
+      continue
+    }
+
+    /* Standalone bold-label paragraph: **Label** : text */
+    const boldLabelParagraph = line.match(/^\*\*(.+?)\*\*\s*:\s*(.+)/)
+    if (boldLabelParagraph) {
+      flushList()
+      blocks.push({ type: "p", text: line })
       continue
     }
 
@@ -255,72 +281,77 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         {/* Key points section */}
-        <section className="-mt-8 mb-12 rounded-2xl border border-primary/20 bg-card p-6 shadow-sm sm:p-8">
-          <h2 className="mb-5 flex items-center gap-2.5 text-base font-semibold text-foreground">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-              <CheckCircle className="h-4 w-4 text-primary" />
-            </span>
-            A retenir
-          </h2>
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {article.keyPoints.map((point, index) => (
-              <li key={index} className="flex items-start gap-3 rounded-xl bg-secondary/50 p-4">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
-                  {index + 1}
-                </span>
-                <span className="text-sm leading-relaxed text-foreground">{point}</span>
-              </li>
-            ))}
-          </ul>
+        <section className="-mt-8 mb-14 overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-sm">
+          <div className="border-b border-primary/10 bg-primary/5 px-6 py-4 sm:px-8">
+            <h2 className="flex items-center gap-2.5 text-base font-semibold text-foreground">
+              <CheckCircle className="h-5 w-5 text-primary" />
+              A retenir
+            </h2>
+          </div>
+          <div className="p-6 sm:p-8">
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {article.keyPoints.map((point, index) => (
+                <li key={index} className="flex items-start gap-3 rounded-xl border border-border/50 bg-secondary/30 p-4 transition-colors hover:bg-secondary/60">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-primary text-xs font-bold text-primary-foreground">
+                    {index + 1}
+                  </span>
+                  <span className="text-sm leading-relaxed text-foreground">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         {/* Table of contents */}
         {toc.length >= 2 && (
-          <section className="mb-12 rounded-2xl border border-border bg-card p-6 sm:p-8">
-            <h2 className="mb-5 flex items-center gap-2.5 text-base font-semibold text-foreground">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary">
-                <List className="h-4 w-4 text-foreground" />
-              </span>
-              Sommaire
-            </h2>
-            <nav aria-label="Table des matieres">
-              <ul className="flex flex-col gap-1">
-                {toc.map((item) => (
-                  <li key={item.id}>
-                    <Link
-                      href={`#${item.id}`}
-                      className={`flex items-center rounded-lg px-3 py-2 text-sm transition-colors hover:bg-secondary hover:text-foreground ${
-                        item.level === "h3"
-                          ? "ml-4 text-muted-foreground"
-                          : "font-medium text-foreground"
-                      }`}
-                    >
-                      {item.level === "h2" && (
-                        <span className="mr-3 h-1.5 w-1.5 rounded-full bg-primary" />
-                      )}
-                      {item.level === "h3" && (
-                        <span className="mr-3 h-1 w-1 rounded-full bg-muted-foreground/40" />
-                      )}
-                      {item.text}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+          <section className="mb-14 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+            <div className="border-b border-border bg-secondary/50 px-6 py-4 sm:px-8">
+              <h2 className="flex items-center gap-2.5 text-base font-semibold text-foreground">
+                <List className="h-5 w-5 text-muted-foreground" />
+                Sommaire
+              </h2>
+            </div>
+            <div className="p-6 sm:p-8">
+              <nav aria-label="Table des matieres">
+                <ul className="flex flex-col gap-0.5">
+                  {toc.map((item) => (
+                    <li key={item.id}>
+                      <Link
+                        href={`#${item.id}`}
+                        className={`flex items-center rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-secondary/80 hover:text-foreground ${
+                          item.level === "h3"
+                            ? "ml-5 text-muted-foreground"
+                            : "font-medium text-foreground"
+                        }`}
+                      >
+                        {item.level === "h2" && (
+                          <span className="mr-3 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        )}
+                        {item.level === "h3" && (
+                          <span className="mr-3 h-1 w-1 shrink-0 rounded-full bg-muted-foreground/30" />
+                        )}
+                        {item.text}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
           </section>
         )}
 
         {/* Article content */}
-        <div className="mb-12">
+        <div className="mb-14">
           {blocks.map((block, index) => {
             if (block.type === "h2") {
               return (
                 <h2
                   key={index}
                   id={headingIds.get(index)}
-                  className="mb-4 mt-14 border-b border-border pb-3 text-2xl font-bold tracking-tight text-foreground first:mt-0"
+                  className="mb-5 mt-16 flex items-center gap-3 text-2xl font-bold tracking-tight text-foreground first:mt-0"
                 >
-                  {block.text}
+                  <span className="h-7 w-1 rounded-full bg-primary" aria-hidden="true" />
+                  {renderInlineMarkdown(block.text)}
                 </h2>
               )
             }
@@ -329,33 +360,33 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 <h3
                   key={index}
                   id={headingIds.get(index)}
-                  className="mb-3 mt-10 text-xl font-semibold text-foreground"
+                  className="mb-4 mt-10 text-lg font-semibold text-foreground"
                 >
-                  {block.text}
+                  {renderInlineMarkdown(block.text)}
                 </h3>
               )
             }
             if (block.type === "p") {
               return (
-                <p key={index} className="mb-5 text-base leading-relaxed text-muted-foreground">
-                  {block.text}
+                <p key={index} className="mb-5 text-base leading-[1.75] text-muted-foreground">
+                  {renderInlineMarkdown(block.text)}
                 </p>
               )
             }
             if (block.type === "ul") {
               return (
-                <ul key={index} className="mb-6 flex flex-col gap-2.5 pl-1">
+                <ul key={index} className="mb-6 flex flex-col gap-2 pl-1">
                   {block.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      <span className="text-base leading-relaxed">
+                    <li key={itemIndex} className="flex items-start gap-3 rounded-lg px-3 py-2 transition-colors hover:bg-secondary/40">
+                      <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span className="text-base leading-[1.75]">
                         {item.type === "label" ? (
                           <>
                             <strong className="font-semibold text-foreground">{item.label}</strong>
-                            <span className="text-muted-foreground"> : {item.text}</span>
+                            <span className="text-muted-foreground"> : {renderInlineMarkdown(item.text)}</span>
                           </>
                         ) : (
-                          <span className="text-muted-foreground">{item.text}</span>
+                          <span className="text-muted-foreground">{renderInlineMarkdown(item.text)}</span>
                         )}
                       </span>
                     </li>
@@ -367,18 +398,18 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               return (
                 <ol key={index} className="mb-6 flex flex-col gap-3 pl-1">
                   {block.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-3 rounded-xl bg-secondary/40 p-4">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                    <li key={itemIndex} className="flex items-start gap-4 rounded-xl border border-border/60 bg-card p-5 shadow-sm transition-colors hover:border-primary/20 hover:shadow-md hover:shadow-primary/5">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">
                         {item.number ?? itemIndex + 1}
                       </span>
-                      <span className="text-base leading-relaxed">
+                      <span className="text-base leading-[1.75]">
                         {item.type === "label" ? (
                           <>
                             <strong className="font-semibold text-foreground">{item.label}</strong>
-                            <span className="text-muted-foreground"> : {item.text}</span>
+                            <span className="text-muted-foreground"> : {renderInlineMarkdown(item.text)}</span>
                           </>
                         ) : (
-                          <span className="text-muted-foreground">{item.text}</span>
+                          <span className="text-muted-foreground">{renderInlineMarkdown(item.text)}</span>
                         )}
                       </span>
                     </li>
@@ -392,26 +423,29 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
         {/* Oral tip */}
         {article.oralTip && (
-          <section className="mb-12 rounded-2xl border border-accent/20 bg-accent/5 p-6 sm:p-8">
-            <h2 className="mb-4 flex items-center gap-2.5 text-base font-semibold text-foreground">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10">
-                <MessageCircle className="h-4 w-4 text-accent" />
-              </span>
-              Astuce pour l'oral
-            </h2>
-            <p className="text-sm leading-relaxed text-muted-foreground">{article.oralTip}</p>
+          <section className="mb-14 overflow-hidden rounded-2xl border border-accent/20 bg-card shadow-sm">
+            <div className="flex items-center gap-2.5 border-b border-accent/10 bg-accent/5 px-6 py-4 sm:px-8">
+              <Lightbulb className="h-5 w-5 text-accent" />
+              <h2 className="text-base font-semibold text-foreground">
+                Astuce pour l'oral
+              </h2>
+            </div>
+            <div className="p-6 sm:p-8">
+              <p className="text-sm leading-relaxed text-muted-foreground">{article.oralTip}</p>
+            </div>
           </section>
         )}
 
         {/* Related content */}
         {(relatedFiches.length > 0 || fallbackArticles.length > 0) && (
-          <section className="rounded-2xl border border-border bg-card p-6 sm:p-8">
-            <h2 className="mb-6 flex items-center gap-2.5 text-base font-semibold text-foreground">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary">
-                <BookOpen className="h-4 w-4 text-foreground" />
-              </span>
-              A lire aussi
-            </h2>
+          <section className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+            <div className="border-b border-border bg-secondary/50 px-6 py-4 sm:px-8">
+              <h2 className="flex items-center gap-2.5 text-base font-semibold text-foreground">
+                <BookOpen className="h-5 w-5 text-muted-foreground" />
+                A lire aussi
+              </h2>
+            </div>
+            <div className="p-6 sm:p-8">
 
             {relatedFiches.length > 0 && (
               <div className="mb-6">
@@ -453,6 +487,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 </div>
               </div>
             )}
+            </div>
           </section>
         )}
 
