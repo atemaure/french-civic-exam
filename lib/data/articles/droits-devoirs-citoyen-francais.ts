@@ -52,7 +52,7 @@ Le citoyen adhère aux valeurs de liberté, d'égalité, de fraternité et de la
   `,
   date: "3 janvier 2026",
   category: "Droits",
-  readingTime: "6 min",
+  readingTime: "2 min",
   keyPoints: [
     "Le citoyen a des droits civiques, civils et sociaux",
     "Respecter la loi et payer ses impôts sont des devoirs",

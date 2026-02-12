@@ -54,7 +54,7 @@ Il reste une figure essentielle pour comprendre l’histoire et les institutions
   `,
   date: "11 février 2026",
   category: "Histoire",
-  readingTime: "5 min",
+  readingTime: "2 min",
   keyPoints: [
     "Napoléon devient empereur en 1804",
     "Il crée le Code civil encore appliqué aujourd’hui",

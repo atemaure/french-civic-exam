@@ -51,7 +51,7 @@ La France est une démocratie où le peuple est souverain :
   `,
   date: "12 janvier 2026",
   category: "Valeurs",
-  readingTime: "7 min",
+  readingTime: "2 min",
   keyPoints: [
     "La devise Liberté, Égalité, Fraternité résume les valeurs essentielles",
     "La laïcité garantit la liberté de conscience pour tous",

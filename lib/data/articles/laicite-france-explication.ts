@@ -41,7 +41,7 @@ La laïcité permet à des personnes de différentes religions et convictions de
   `,
   date: "5 janvier 2026",
   category: "Valeurs",
-  readingTime: "6 min",
+  readingTime: "2 min",
   keyPoints: [
     "La laïcité garantit la liberté de croire ou de ne pas croire",
     "L'État est séparé des religions depuis 1905",
