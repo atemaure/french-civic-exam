@@ -230,12 +230,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   ]
 
   return (
-    <div className="pb-16 sm:pb-24">
+    <div className="pb-12 sm:pb-16">
       <JsonLd data={jsonLd} />
 
       {/* Hero header with colored background */}
       <div className="border-b border-border bg-secondary/50">
-        <div className="mx-auto max-w-3xl px-4 pb-12 pt-6 sm:px-6 sm:pb-14 sm:pt-10 lg:px-8">
+        <div className="mx-auto max-w-3xl px-4 pb-10 pt-5 sm:px-6 sm:pb-12 sm:pt-8 lg:px-8">
           <Breadcrumbs
             items={[
               { label: "Accueil", href: "/" },
@@ -244,35 +244,35 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             ]}
           />
 
-          <div className="mb-4 mt-3">
-            <Button variant="ghost" size="sm" asChild className="gap-2 px-0 text-muted-foreground hover:bg-transparent hover:text-primary">
+          <div className="mb-3 mt-2">
+            <Button variant="ghost" size="sm" asChild className="gap-1.5 px-0 text-muted-foreground hover:bg-transparent hover:text-primary">
               <Link href="/articles">
-                <ArrowLeft className="h-4 w-4" />
-                Retour aux articles
+                <ArrowLeft className="h-3.5 w-3.5" />
+                <span className="text-xs">Retour aux articles</span>
               </Link>
             </Button>
           </div>
 
           <header>
-            <div className="mb-3 flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center rounded-full bg-primary/10 px-3.5 py-1 text-xs font-semibold tracking-wide text-primary">
+            <div className="mb-2.5 flex flex-wrap items-center gap-2.5">
+              <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-0.5 text-xs font-semibold tracking-wide text-primary">
                 {article.category}
               </span>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <span className="flex items-center gap-1.5">
-                  <CalendarDays className="h-3.5 w-3.5" />
+              <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                <span className="flex items-center gap-1">
+                  <CalendarDays className="h-3 w-3" />
                   <time dateTime={dateIso}>{article.date}</time>
                 </span>
-                <span className="flex items-center gap-1.5">
-                  <Clock className="h-3.5 w-3.5" />
+                <span className="flex items-center gap-1">
+                  <Clock className="h-3 w-3" />
                   {article.readingTime} de lecture
                 </span>
               </div>
             </div>
-            <h1 className="text-balance text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+            <h1 className="text-balance text-xl font-bold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
               {article.title}
             </h1>
-            <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mt-2 text-pretty text-sm leading-normal text-muted-foreground sm:text-base">
               {article.excerpt}
             </p>
           </header>
@@ -281,21 +281,21 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         {/* Key points section */}
-        <section className="-mt-8 mb-10 overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-sm">
-          <div className="border-b border-primary/10 bg-primary/5 px-6 py-4 sm:px-8">
-            <h2 className="flex items-center gap-2.5 text-base font-semibold text-foreground">
-              <CheckCircle className="h-5 w-5 text-primary" />
+        <section className="-mt-8 mb-8 overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-sm">
+          <div className="border-b border-primary/10 bg-primary/5 px-5 py-3 sm:px-6">
+            <h2 className="flex items-center gap-2 text-sm font-semibold text-foreground">
+              <CheckCircle className="h-4 w-4 text-primary" />
               A retenir
             </h2>
           </div>
-          <div className="p-6 sm:p-8">
-            <ul className="grid gap-3 sm:grid-cols-2">
+          <div className="p-5 sm:p-6">
+            <ul className="grid gap-2.5 sm:grid-cols-2">
               {article.keyPoints.map((point, index) => (
-                <li key={index} className="flex items-start gap-3 rounded-xl border border-border/50 bg-secondary/30 p-4 transition-colors hover:bg-secondary/60">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-primary text-xs font-bold text-primary-foreground">
+                <li key={index} className="flex items-start gap-2.5 rounded-lg border border-border/50 bg-secondary/30 px-3 py-2.5 transition-colors hover:bg-secondary/60">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-primary text-[0.65rem] font-bold text-primary-foreground">
                     {index + 1}
                   </span>
-                  <span className="text-sm leading-relaxed text-foreground">{point}</span>
+                  <span className="text-[0.813rem] leading-snug text-foreground">{point}</span>
                 </li>
               ))}
             </ul>
@@ -304,31 +304,31 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
         {/* Table of contents */}
         {toc.length >= 2 && (
-          <section className="mb-10 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-            <div className="border-b border-border bg-secondary/50 px-6 py-4 sm:px-8">
-              <h2 className="flex items-center gap-2.5 text-base font-semibold text-foreground">
-                <List className="h-5 w-5 text-muted-foreground" />
+          <section className="mb-8 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+            <div className="border-b border-border bg-secondary/50 px-5 py-3 sm:px-6">
+              <h2 className="flex items-center gap-2 text-sm font-semibold text-foreground">
+                <List className="h-4 w-4 text-muted-foreground" />
                 Sommaire
               </h2>
             </div>
-            <div className="px-6 py-4 sm:px-8 sm:py-5">
+            <div className="px-5 py-3 sm:px-6">
               <nav aria-label="Table des matieres">
                 <ul className="flex flex-col">
                   {toc.map((item) => (
                     <li key={item.id}>
                       <Link
                         href={`#${item.id}`}
-                        className={`flex items-center rounded-lg px-3 py-2 text-sm transition-colors hover:bg-secondary/80 hover:text-foreground ${
+                        className={`flex items-center rounded-md px-2.5 py-1.5 text-[0.813rem] transition-colors hover:bg-secondary/80 hover:text-foreground ${
                           item.level === "h3"
-                            ? "ml-5 text-muted-foreground"
+                            ? "ml-4 text-muted-foreground"
                             : "font-medium text-foreground"
                         }`}
                       >
                         {item.level === "h2" && (
-                          <span className="mr-3 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                          <span className="mr-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                         )}
                         {item.level === "h3" && (
-                          <span className="mr-3 h-1 w-1 shrink-0 rounded-full bg-muted-foreground/30" />
+                          <span className="mr-2.5 h-1 w-1 shrink-0 rounded-full bg-muted-foreground/30" />
                         )}
                         {item.text}
                       </Link>
@@ -341,16 +341,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         )}
 
         {/* Article content */}
-        <div className="mb-10">
+        <div className="mb-8">
           {blocks.map((block, index) => {
             if (block.type === "h2") {
               return (
                 <h2
                   key={index}
                   id={headingIds.get(index)}
-                  className="mb-3 mt-10 flex items-center gap-3 text-xl font-bold tracking-tight text-foreground first:mt-0 sm:text-2xl"
+                  className="mb-2 mt-8 flex items-center gap-2.5 text-lg font-bold tracking-tight text-foreground first:mt-0 sm:text-xl"
                 >
-                  <span className="h-6 w-1 rounded-full bg-primary" aria-hidden="true" />
+                  <span className="h-5 w-1 rounded-full bg-primary" aria-hidden="true" />
                   {renderInlineMarkdown(block.text)}
                 </h2>
               )
@@ -360,7 +360,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 <h3
                   key={index}
                   id={headingIds.get(index)}
-                  className="mb-2 mt-7 text-base font-semibold text-foreground sm:text-lg"
+                  className="mb-1.5 mt-5 text-[0.938rem] font-semibold text-foreground sm:text-base"
                 >
                   {renderInlineMarkdown(block.text)}
                 </h3>
@@ -368,18 +368,18 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             }
             if (block.type === "p") {
               return (
-                <p key={index} className="mb-3 text-[0.938rem] leading-relaxed text-muted-foreground">
+                <p key={index} className="mb-2 text-[0.875rem] leading-normal text-muted-foreground">
                   {renderInlineMarkdown(block.text)}
                 </p>
               )
             }
             if (block.type === "ul") {
               return (
-                <ul key={index} className="mb-4 flex flex-col gap-0.5 pl-1">
+                <ul key={index} className="mb-2.5 flex flex-col pl-1">
                   {block.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-2.5 rounded-md px-2.5 py-1.5 transition-colors hover:bg-secondary/40">
-                      <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      <span className="text-[0.938rem] leading-relaxed">
+                    <li key={itemIndex} className="flex items-start gap-2 rounded-md px-2 py-1 transition-colors hover:bg-secondary/40">
+                      <span className="mt-[6px] h-1 w-1 shrink-0 rounded-full bg-primary" />
+                      <span className="text-[0.875rem] leading-normal">
                         {item.type === "label" ? (
                           <>
                             <strong className="font-semibold text-foreground">{item.label}</strong>
@@ -396,13 +396,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             }
             if (block.type === "ol") {
               return (
-                <ol key={index} className="mb-4 flex flex-col gap-2 pl-1">
+                <ol key={index} className="mb-2.5 flex flex-col gap-1.5 pl-1">
                   {block.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-3 rounded-xl border border-border/60 bg-card p-4 shadow-sm transition-colors hover:border-primary/20">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary text-xs font-bold text-primary-foreground">
+                    <li key={itemIndex} className="flex items-start gap-2.5 rounded-lg border border-border/60 bg-card px-3 py-2.5 shadow-sm transition-colors hover:border-primary/20">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-primary text-[0.65rem] font-bold text-primary-foreground">
                         {item.number ?? itemIndex + 1}
                       </span>
-                      <span className="text-[0.938rem] leading-relaxed">
+                      <span className="text-[0.875rem] leading-normal">
                         {item.type === "label" ? (
                           <>
                             <strong className="font-semibold text-foreground">{item.label}</strong>
@@ -423,15 +423,15 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
         {/* Oral tip */}
         {article.oralTip && (
-          <section className="mb-10 overflow-hidden rounded-2xl border border-accent/20 bg-card shadow-sm">
-            <div className="flex items-center gap-2.5 border-b border-accent/10 bg-accent/5 px-6 py-4 sm:px-8">
-              <Lightbulb className="h-5 w-5 text-accent" />
-              <h2 className="text-base font-semibold text-foreground">
+          <section className="mb-8 overflow-hidden rounded-2xl border border-accent/20 bg-card shadow-sm">
+            <div className="flex items-center gap-2 border-b border-accent/10 bg-accent/5 px-5 py-3 sm:px-6">
+              <Lightbulb className="h-4 w-4 text-accent" />
+              <h2 className="text-sm font-semibold text-foreground">
                 Astuce pour l'oral
               </h2>
             </div>
-            <div className="p-6 sm:p-8">
-              <p className="text-sm leading-relaxed text-muted-foreground">{article.oralTip}</p>
+            <div className="px-5 py-4 sm:px-6">
+              <p className="text-[0.813rem] leading-normal text-muted-foreground">{article.oralTip}</p>
             </div>
           </section>
         )}
@@ -439,20 +439,20 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         {/* Related content */}
         {(relatedFiches.length > 0 || fallbackArticles.length > 0) && (
           <section className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-            <div className="border-b border-border bg-secondary/50 px-6 py-4 sm:px-8">
-              <h2 className="flex items-center gap-2.5 text-base font-semibold text-foreground">
-                <BookOpen className="h-5 w-5 text-muted-foreground" />
+            <div className="border-b border-border bg-secondary/50 px-5 py-3 sm:px-6">
+              <h2 className="flex items-center gap-2 text-sm font-semibold text-foreground">
+                <BookOpen className="h-4 w-4 text-muted-foreground" />
                 A lire aussi
               </h2>
             </div>
-            <div className="p-6 sm:p-8">
+            <div className="p-5 sm:p-6">
 
             {relatedFiches.length > 0 && (
-              <div className="mb-6">
-                <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              <div className="mb-4">
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                   Fiches associees
                 </h3>
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid gap-3 sm:grid-cols-2">
                   {relatedFiches.map((fiche) => (
                     <FicheCard
                       key={fiche.slug}
@@ -468,20 +468,20 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
             {fallbackArticles.length > 0 && (
               <div>
-                <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                   Articles complementaires
                 </h3>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1.5">
                   {fallbackArticles.map((item) => (
                     <Link
                       key={item.slug}
                       href={`/articles/${item.slug}`}
-                      className="group flex items-center justify-between rounded-xl border border-border p-4 transition-all hover:border-primary/30 hover:bg-secondary/50"
+                      className="group flex items-center justify-between rounded-lg border border-border px-3 py-2.5 transition-all hover:border-primary/30 hover:bg-secondary/50"
                     >
-                      <span className="text-sm font-medium text-foreground transition-colors group-hover:text-primary">
+                      <span className="text-[0.813rem] font-medium text-foreground transition-colors group-hover:text-primary">
                         {item.title}
                       </span>
-                      <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                      <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
                     </Link>
                   ))}
                 </div>
@@ -492,14 +492,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         )}
 
         {/* Sources and back link */}
-        <div className="mt-10 flex flex-col items-center gap-4 text-center">
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-sm text-muted-foreground">Pour des sources officielles, consultez notre page de references.</p>
-            <Link href="/sources" className="text-sm font-medium text-primary hover:underline">
+        <div className="mt-8 flex flex-col items-center gap-3 text-center">
+          <div className="flex flex-col items-center gap-1.5">
+            <p className="text-xs text-muted-foreground">Pour des sources officielles, consultez notre page de references.</p>
+            <Link href="/sources" className="text-xs font-medium text-primary hover:underline">
               Voir les sources officielles
             </Link>
           </div>
-          <Button asChild size="lg" className="rounded-full px-8">
+          <Button asChild size="default" className="rounded-full px-6">
             <Link href="/articles">Voir tous les articles</Link>
           </Button>
         </div>
