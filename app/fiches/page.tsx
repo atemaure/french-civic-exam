@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { createMetadata } from "@/lib/seo/metadata"
-import { fiches, themes, getEssentialFiches, getFichesByTheme } from "@/lib/data/fiches"
+import { fiches, themes, getEssentialFiches, getFichesByTheme, sortFichesByDate } from "@/lib/data/fiches"
 import { FicheCard } from "@/components/cards/fiche-card"
 import { ThemeCard } from "@/components/cards/theme-card"
 import { Button } from "@/components/ui/button"
@@ -24,11 +24,12 @@ export default async function FichesPage({ searchParams }: PageProps) {
   const selectedTheme = params.theme
   const showEssential = params.essential === "true"
 
-  const displayedFiches = showEssential
+  const rawDisplayedFiches = showEssential
     ? getEssentialFiches()
     : selectedTheme
       ? getFichesByTheme(selectedTheme)
       : fiches
+  const displayedFiches = sortFichesByDate(rawDisplayedFiches)
 
   const pageTitle = showEssential
     ? "Fiches essentielles"
