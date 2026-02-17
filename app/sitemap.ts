@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next"
 
 import { articles, toISODate } from "@/lib/data/articles"
+import { examThemes } from "@/lib/data/exam-themes"
 import { fiches } from "@/lib/data/fiches"
 import { SITE_URL } from "@/lib/seo/config"
 
@@ -8,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
     "/fiches",
+    "/themes-examen",
     "/articles",
     "/methode",
     "/a-propos",
@@ -37,5 +39,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
-  return [...staticRoutes, ...ficheRoutes, ...articleRoutes]
+  const themeRoutes = examThemes.map((theme) => ({
+    url: `${SITE_URL}/themes-examen/${theme.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }))
+
+  const subThemeRoutes = examThemes.flatMap((theme) =>
+    theme.subThemes.map((subTheme) => ({
+      url: `${SITE_URL}/themes-examen/${theme.slug}/${subTheme.slug}`,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    }))
+  )
+
+  return [...staticRoutes, ...ficheRoutes, ...articleRoutes, ...themeRoutes, ...subThemeRoutes]
 }

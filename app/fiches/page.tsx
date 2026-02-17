@@ -135,6 +135,7 @@ export default async function FichesPage({ searchParams }: PageProps) {
                 description={fiche.description}
                 slug={fiche.slug}
                 theme={fiche.theme}
+                themeSlug={fiche.themeSlug}
               />
             ))}
           </div>

@@ -2,6 +2,10 @@
 
 Ce guide explique comment creer des articles coherents avec le rendu actuel de l'app.
 
+Note:
+- `CONTENT_GUIDE.md` est la reference globale (schemas, regles transverses, conventions communes).
+- Ce fichier reste focalise sur les specificites articles.
+
 ## Structure des fichiers
 
 Un article = un fichier :
@@ -60,8 +64,12 @@ Consequences :
 
 ## Ordre des articles
 
-`getLatestArticles()` utilise l'ordre du tableau `articles` dans `index.ts`.
-Pour afficher les plus recents, mettez les articles les plus nouveaux en tete du tableau.
+L'ordre d'affichage est gere automatiquement par date dans `lib/data/articles/index.ts` (tri descendant).
+L'ordre dans `baseArticles` n'est donc pas la source de verite.
+
+Important:
+- Renseigner une `date` valide et coherente est obligatoire.
+- Si la date est invalide, le tri peut devenir inattendu.
 
 ## Template minimal
 

@@ -1,63 +1,59 @@
 # SEO + LLMSEO Report — QuizCitoyen
 
-## Audit rapide
-- Framework: Next.js 16 (App Router, dossier `app/`).
-- Routage: routes statiques + SSG via `generateStaticParams` (articles, fiches, thèmes).
-- Données: contenu éditorial en dur dans `lib/data/articles/` et `lib/data/fiches/*`.
-- SEO existant avant: metadata basique dans `app/layout.tsx` + par page, `app/robots.ts`, `app/sitemap.ts`.
-- Génération: SSG pour `articles/[slug]`, `fiches/[slug]`, `themes/[slug]`, reste en statique.
+Date: 2026-02-17
 
-## Changements (rationale)
-- Centralisation SEO via helpers `lib/seo/*` pour titres, descriptions, canonicals, OG/Twitter, robots.
-- JSON-LD réutilisable pour WebSite/Organization, BreadcrumbList, Article, LearningResource, FAQPage, HowTo, Glossaire.
-- Breadcrumbs UI + JSON-LD sur pages clés.
-- Ajout des pages LLMSEO stables: `/faq`, `/sources`, `/glossaire`, `/methodologie`.
-- Suppression des pages thématiques `/themes` (retour sur `/fiches?theme=...`).
-- Table des matières automatique sur les articles.
-- Sitemap + robots mis à jour et sensibles à l’environnement (`SHOULD_INDEX`).
+## État actuel (synthèse)
+- Framework: Next.js 16 (App Router)
+- Contenu: statique via `lib/data/articles`, `lib/data/fiches`, `lib/data/exam-themes`
+- Pages SEO clés: `/faq`, `/sources`, `/glossaire`, `/methodologie`
+- Arborescence thèmes: `/themes-examen`, `/themes-examen/[themeSlug]`, `/themes-examen/[themeSlug]/[subThemeSlug]`
+- SSG actif sur articles, fiches, thèmes, sous-thèmes
 
-## Fichiers ajoutés
-- `app/faq/page.tsx`
-- `app/glossaire/page.tsx`
-- `app/methodologie/page.tsx`
-- `app/sources/page.tsx`
-- (supprimés) `app/themes/page.tsx`
-- (supprimés) `app/themes/[slug]/page.tsx`
-- `components/seo/breadcrumbs.tsx`
-- `components/seo/json-ld.tsx`
-- `lib/seo/config.ts`
-- `lib/seo/jsonld.ts`
-- `lib/seo/metadata.ts`
-- `lib/seo/slugify.ts`
+## Indexation et robots
+- `app/robots.ts` applique une stratégie fail-closed:
+  - hors prod: `Disallow: /`
+  - prod: `Allow: /` + `Disallow: /api/` + `Sitemap`
+- `host` n'est pas exposé dans `robots.txt`.
+- `lib/seo/config.ts`:
+  - `SHOULD_INDEX = IS_PRODUCTION`
+  - `SITE_URL` dérivé de `NEXT_PUBLIC_SITE_URL` (fallback Vercel/local)
 
-## Fichiers modifiés
-- `app/layout.tsx`
-- `app/page.tsx`
-- `app/fiches/page.tsx`
-- `app/fiches/[slug]/page.tsx`
-- `app/articles/page.tsx`
-- `app/articles/[slug]/page.tsx`
-- `app/methode/page.tsx`
-- `app/a-propos/page.tsx`
-- `app/robots.ts`
-- `app/sitemap.ts`
-- `app/articles/page.tsx` (filtrage par `?category=...`, H1 dynamique, `noindex`)
-- `components/cards/theme-card.tsx`
-- `components/site-header.tsx`
-- `components/site-footer.tsx`
+## Sitemap
+- `app/sitemap.ts` inclut:
+  - routes statiques
+  - fiches `/fiches/[slug]`
+  - articles `/articles/[slug]`
+  - thèmes `/themes-examen/[themeSlug]`
+  - sous-thèmes `/themes-examen/[themeSlug]/[subThemeSlug]`
+- Les URLs sont construites avec `SITE_URL`.
 
-## Checklist validation
-- `npm install` ✅
-- `npm run lint` ❌ (`eslint` introuvable)
-- `npm run build` ✅
+## JSON-LD et metadata
+- Helpers centralisés dans `lib/seo/*`.
+- Breadcrumb JSON-LD sur pages clés.
+- Article JSON-LD sur pages article.
+- Metadata générées par route via `createMetadata`.
 
-## Suggestions de contenu (FAQ / sources / glossaire)
-- FAQ: ajouter “Quel est le niveau de français attendu ?”, “Quels documents apporter ?”, “Combien de temps dure l’entretien ?”.
-- Sources: compléter avec `legifrance.gouv.fr` (textes juridiques), `interieur.gouv.fr` (naturalisation).
-- Glossaire: ajouter “Déclaration des droits de l’homme et du citoyen”, “Séparation des pouvoirs”, “Décentralisation”.
+## Changements récents importants
+1. Harmonisation visuelle SEO-friendly des pages thèmes/sous-thèmes/fiches/articles (meilleure hiérarchie de contenu).
+2. Unification des icônes par thème/catégorie via `lib/ui/theme-icons.ts`.
+3. Cohérence des blocs de contenu (points clés, CTA, navigation interne) pour améliorer lisibilité et maillage.
 
-## Notes d’implémentation
-- Indexation contrôlée par `SHOULD_INDEX` (prod vs preview). Configurez `NEXT_PUBLIC_SITE_URL` en production.
-- JSON-LD injecté globalement dans le layout + par type de page.
-- Les liens thématiques utilisent `/fiches?theme=...` (plus de pages `/themes`).
-- Filtrage articles: pages `?category=...` non indexées pour éviter le duplicate content.
+## Vérifications manuelles recommandées
+1. `npm run dev`
+2. Vérifier:
+   - `/robots.txt`
+   - `/sitemap.xml`
+   - `/themes-examen`
+   - `/themes-examen/principes-valeurs-republique`
+   - `/themes-examen/principes-valeurs-republique/devise-symboles`
+   - `/articles` et une page article
+   - `/fiches` et une fiche
+
+## Risques / dette SEO restante
+1. `ignoreBuildErrors: true` dans `next.config.mjs` (risque qualité).
+2. Home (`app/page.tsx`) a encore des articles en dur (risque d'écart avec les données officielles).
+3. Variables d'environnement à valider sur Vercel:
+   - `NEXT_PUBLIC_SITE_URL=https://www.quizcitoyen.fr`
+
+## Conclusion
+La base SEO est saine pour la production: robots conditionnel, sitemap complet, routes thématiques indexables et structured data. Les prochaines améliorations prioritaires sont la suppression de `ignoreBuildErrors` et l'alignement total des données home avec `lib/data/*`.

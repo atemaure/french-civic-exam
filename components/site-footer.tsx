@@ -4,6 +4,7 @@ import Link from "next/link"
 const footerLinks = {
   navigation: [
     { name: "Accueil", href: "/" },
+    { name: "Thèmes de l'examen", href: "/themes-examen" },
     { name: "Fiches pratiques", href: "/fiches" },
     { name: "Articles", href: "/articles" },
     { name: "Méthode", href: "/methode" },
