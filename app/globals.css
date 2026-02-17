@@ -124,6 +124,53 @@
   }
 }
 
+@layer base {
+  /* Harmonization for hardcoded light utility classes in dark mode */
+  .dark .bg-white {
+    background-color: var(--card) !important;
+  }
+
+  .dark .bg-white\/90 {
+    background-color: color-mix(in oklab, var(--card) 90%, transparent) !important;
+  }
+
+  .dark .bg-blue-50 {
+    background-color: color-mix(in oklab, var(--secondary) 92%, transparent) !important;
+  }
+
+  .dark .bg-blue-50\/50 {
+    background-color: color-mix(in oklab, var(--secondary) 50%, transparent) !important;
+  }
+
+  .dark .bg-blue-50\/60 {
+    background-color: color-mix(in oklab, var(--secondary) 60%, transparent) !important;
+  }
+
+  .dark .bg-blue-50\/70 {
+    background-color: color-mix(in oklab, var(--secondary) 70%, transparent) !important;
+  }
+
+  .dark .border-blue-200 {
+    border-color: var(--border) !important;
+  }
+
+  .dark .from-blue-50\/70 {
+    --tw-gradient-from: color-mix(in oklab, var(--secondary) 70%, transparent)
+      var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: color-mix(in oklab, var(--secondary) 0%, transparent)
+      var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+  }
+
+  .dark .from-blue-50\/60 {
+    --tw-gradient-from: color-mix(in oklab, var(--secondary) 60%, transparent)
+      var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: color-mix(in oklab, var(--secondary) 0%, transparent)
+      var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+  }
+}
+
 /* Smooth scroll + offset for anchor links (clears fixed header) */
 html {
   scroll-behavior: smooth;

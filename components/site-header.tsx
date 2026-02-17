@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { AppCtaButton } from "@/components/app-cta-button"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { Menu, X } from "lucide-react"
 
 const navigation = [
@@ -50,24 +51,28 @@ export function SiteHeader() {
           ))}
         </div>
 
-        <div className="hidden md:flex">
-          <AppCtaButton size="default" />
-        </div>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
 
-        {/* Mobile menu button */}
-        <div className="flex md:hidden">
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground hover:bg-secondary hover:text-foreground"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <span className="sr-only">Ouvrir le menu</span>
-            {mobileMenuOpen ? (
-              <X className="h-6 w-6" aria-hidden="true" />
-            ) : (
-              <Menu className="h-6 w-6" aria-hidden="true" />
-            )}
-          </button>
+          <div className="hidden md:flex">
+            <AppCtaButton size="default" />
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="flex md:hidden">
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground hover:bg-secondary hover:text-foreground"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <span className="sr-only">Ouvrir le menu</span>
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6" aria-hidden="true" />
+              ) : (
+                <Menu className="h-6 w-6" aria-hidden="true" />
+              )}
+            </button>
+          </div>
         </div>
       </nav>
 

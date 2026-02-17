@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { JsonLd } from "@/components/seo/json-ld"
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo/jsonld"
 import { baseMetadata } from "@/lib/seo/metadata"
+import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = baseMetadata
 
@@ -19,7 +20,7 @@ export default function RootLayout({
   const structuredData = [organizationJsonLd(), websiteJsonLd()]
 
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning>
       <head>
         {/* Google Tag Manager */}
         <script
@@ -44,10 +45,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        <SiteHeader />
-        <main className="min-h-screen">{children}</main>
-        <SiteFooter />
-        <Analytics />
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
+          <SiteHeader />
+          <main className="min-h-screen">{children}</main>
+          <SiteFooter />
+          <Analytics />
+        </ThemeProvider>
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){'use strict';document.addEventListener('contextmenu',function(e){e.preventDefault()});document.addEventListener('keydown',function(e){var k=e.key.toLowerCase();var isF12=e.key==='F12';var isCtrlShiftI=e.ctrlKey&&e.shiftKey&&k==='i';var isCtrlShiftJ=e.ctrlKey&&e.shiftKey&&k==='j';var isCtrlU=e.ctrlKey&&k==='u';var isCtrlS=e.ctrlKey&&k==='s';if(isF12||isCtrlShiftI||isCtrlShiftJ||isCtrlU||isCtrlS){e.preventDefault();e.stopPropagation()}})})();`,
