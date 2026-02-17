@@ -85,6 +85,19 @@ export function getFichesByTheme(themeSlug: string): Fiche[] {
   return fiches.filter((fiche) => fiche.themeSlug === themeSlug)
 }
 
+function getFicheTimestamp(fiche: Fiche): number {
+  if (!fiche.date) {
+    return Number.NEGATIVE_INFINITY
+  }
+
+  const parsed = Date.parse(fiche.date)
+  return Number.isNaN(parsed) ? Number.NEGATIVE_INFINITY : parsed
+}
+
+export function sortFichesByDate(items: Fiche[]): Fiche[] {
+  return [...items].sort((a, b) => getFicheTimestamp(b) - getFicheTimestamp(a))
+}
+
 export function getEssentialFiches(): Fiche[] {
   return fiches.filter((fiche) => fiche.isEssential)
 }

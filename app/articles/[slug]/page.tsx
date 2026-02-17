@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 
 import { articles, getArticleBySlug, getArticlesByCategory, getLatestArticles, toISODate } from "@/lib/data/articles"
-import { getFichesByTheme } from "@/lib/data/fiches"
+import { getFichesByTheme, sortFichesByDate } from "@/lib/data/fiches"
 import { Button } from "@/components/ui/button"
 import { FicheCard } from "@/components/cards/fiche-card"
 import { Breadcrumbs } from "@/components/seo/breadcrumbs"
@@ -202,7 +202,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   const category = article.category
   const themeSlug = categoryToTheme[category]
-  const relatedFiches = themeSlug ? getFichesByTheme(themeSlug).slice(0, 3) : []
+  const relatedFiches = themeSlug ? sortFichesByDate(getFichesByTheme(themeSlug)).slice(0, 3) : []
 
   const relatedArticles = getArticlesByCategory(category)
     .filter((item) => item.slug !== article.slug)

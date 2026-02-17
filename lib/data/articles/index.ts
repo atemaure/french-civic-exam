@@ -7,21 +7,33 @@ import { article as droits_devoirs_citoyen_francais } from "./droits-devoirs-cit
 import { article as napoleon_premier } from "./napoleon-premier"
 import { article as napoleon_trois } from "./napoleon-trois"
 import { article as questions_mise_en_situation_entretien_civique } from "./questions-mise-en-situation-entretien-civique"
+import { article as role_premier_ministre } from "./role-premier-ministre"
+import { article as types_examen_civique_csp_cr_naturalisation } from "./types-examen-civique-csp-cr-naturalisation"
+import { toISODate } from "./utils"
 
 export type { Article } from "./types"
-export { toISODate } from "./utils"
 
-export const articles = [
+const baseArticles = [
   questions_mise_en_situation_entretien_civique,
   napoleon_trois,
   napoleon_premier,
+  role_premier_ministre,
   preparer_entretien_naturalisation,
   valeurs_fondamentales_republique,
   role_president_republique,
   symboles_republique_francaise,
+  types_examen_civique_csp_cr_naturalisation,
   laicite_france_explication,
   droits_devoirs_citoyen_francais
 ]
+
+function getArticleTimestamp(date: string): number {
+  const isoDate = toISODate(date)
+  const parsed = Date.parse(isoDate ?? date)
+  return Number.isNaN(parsed) ? Number.NEGATIVE_INFINITY : parsed
+}
+
+export const articles = [...baseArticles].sort((a, b) => getArticleTimestamp(b.date) - getArticleTimestamp(a.date))
 
 export function getArticleBySlug(slug: string) {
   return articles.find((article) => article.slug === slug)
@@ -34,3 +46,5 @@ export function getLatestArticles(count: number = 6) {
 export function getArticlesByCategory(category: string) {
   return articles.filter((article) => article.category.toLowerCase() === category.toLowerCase())
 }
+
+export { toISODate } from "./utils"

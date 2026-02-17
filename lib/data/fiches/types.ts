@@ -2,6 +2,7 @@ export interface Fiche {
   slug: string
   title: string
   description: string
+  date?: string
   theme: string
   themeSlug: string
   definition: string
