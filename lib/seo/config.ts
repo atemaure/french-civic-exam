@@ -17,7 +17,7 @@ export const DEFAULT_TITLE = "QuizCitoyen | Préparation à l'entretien civique"
 export const DEFAULT_DESCRIPTION = "Préparez l'entretien civique de naturalisation française avec des fiches claires, des articles pédagogiques et une méthode en 4 étapes."
 export const OG_IMAGE = "/logo.png"
 export const ORGANIZATION_SAME_AS: string[] = []
-export const SHOULD_INDEX = IS_PRODUCTION && SITE_URL.includes("quizcitoyen.fr")
+export const SHOULD_INDEX = IS_PRODUCTION
 
 export function absoluteUrl(path: string): string {
   if (path.startsWith("http://") || path.startsWith("https://")) {
