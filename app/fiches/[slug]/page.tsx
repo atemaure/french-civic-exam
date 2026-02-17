@@ -10,7 +10,7 @@ import { Breadcrumbs } from "@/components/seo/breadcrumbs"
 import { JsonLd } from "@/components/seo/json-ld"
 import { breadcrumbJsonLd, learningResourceJsonLd } from "@/lib/seo/jsonld"
 import { createMetadata } from "@/lib/seo/metadata"
-import { ArrowLeft, BookOpen, CheckCircle, Lightbulb, MessageCircle, Star } from "lucide-react"
+import { ArrowLeft, BookOpen, CheckCircle, Landmark, Lightbulb, MessageCircle, Star } from "lucide-react"
 
 export async function generateStaticParams() {
   return fiches.map((fiche) => ({
@@ -86,7 +86,7 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
 
   return (
     <div className="py-12 sm:py-16">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <JsonLd data={jsonLd} />
         <Breadcrumbs
           items={[
@@ -105,11 +105,16 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
           </Button>
         </div>
 
-        <header className="mb-10">
+        <header className="relative mb-10 overflow-hidden rounded-2xl border border-border bg-gradient-to-b from-blue-50/70 to-background p-6 shadow-md shadow-black/5 sm:p-8">
+          <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-blue-700 via-blue-500 to-slate-100" />
+          <div className="absolute right-5 top-5 hidden h-10 w-10 items-center justify-center rounded-full border border-blue-200 bg-white/90 sm:flex">
+            <Landmark className="h-5 w-5 text-blue-700" />
+          </div>
+
           <div className="mb-4 flex flex-wrap items-center gap-3">
             <Link
               href={`/fiches?theme=${fiche.themeSlug}`}
-              className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary hover:bg-primary/20"
+              className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/20"
             >
               {fiche.theme}
             </Link>
@@ -123,55 +128,77 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
           <h1 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             {fiche.title}
           </h1>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-base leading-relaxed text-foreground/80 sm:text-lg">
             {fiche.description}
           </p>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <div className="rounded-lg border border-blue-200 bg-white px-4 py-3">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Thématique</p>
+              <p className="mt-1 text-sm font-semibold text-foreground">{fiche.theme}</p>
+            </div>
+            <div className="rounded-lg border border-blue-200 bg-white px-4 py-3">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Points clés</p>
+              <p className="mt-1 text-sm font-semibold text-foreground">{fiche.keyPoints.length} à maîtriser</p>
+            </div>
+            <div className="rounded-lg border border-blue-200 bg-white px-4 py-3">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Priorité</p>
+              <p className="mt-1 text-sm font-semibold text-foreground">
+                {fiche.isEssential ? "Fiche essentielle" : "Fiche complémentaire"}
+              </p>
+            </div>
+          </div>
         </header>
 
-        <Card className="mb-8 border-primary/20 bg-primary/5">
+        <Card className="mb-8 border-border/70 bg-white shadow-sm">
           <CardContent className="p-6">
             <h2 id="definition" className="mb-3 flex items-center gap-2 text-lg font-semibold text-foreground">
-              <BookOpen className="h-5 w-5 text-primary" />
+              <BookOpen className="h-5 w-5 text-blue-700" />
               Définition
             </h2>
-            <p className="text-sm leading-relaxed text-foreground">{fiche.definition}</p>
+            <p className="text-sm leading-relaxed text-foreground/85">{fiche.definition}</p>
           </CardContent>
         </Card>
 
-        <div className="mb-8">
+        <div className="mb-8 rounded-xl border border-border/70 bg-white p-6 shadow-sm">
           <h2 id="points-cles" className="mb-4 flex items-center gap-2 text-lg font-semibold text-foreground">
-            <CheckCircle className="h-5 w-5 text-primary" />
+            <CheckCircle className="h-5 w-5 text-blue-700" />
             Points clés à retenir
           </h2>
           <ul className="space-y-3">
             {fiche.keyPoints.map((point, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-medium text-primary-foreground">
-                  {index + 1}
-                </span>
-                <span className="text-sm leading-relaxed text-muted-foreground">{point}</span>
+              <li key={index} className="flex items-start gap-2.5 rounded-lg border border-border/60 bg-secondary/20 px-3 py-3">
+                <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-blue-700" />
+                {point.includes(":") ? (
+                  <span className="text-sm leading-relaxed text-foreground/85">
+                    <strong className="font-semibold text-foreground">{point.split(":")[0]}:</strong>{" "}
+                    {point.split(":").slice(1).join(":").trim()}
+                  </span>
+                ) : (
+                  <span className="text-sm leading-relaxed text-foreground/85">{point}</span>
+                )}
               </li>
             ))}
           </ul>
         </div>
 
-        <Card className="mb-8 border-secondary bg-secondary/50">
+        <Card className="mb-8 border-border/70 bg-white shadow-sm">
           <CardContent className="p-6">
             <h2 id="exemple" className="mb-3 flex items-center gap-2 text-lg font-semibold text-foreground">
-              <Lightbulb className="h-5 w-5 text-primary" />
+              <Lightbulb className="h-5 w-5 text-blue-700" />
               Exemple concret
             </h2>
-            <p className="text-sm leading-relaxed text-muted-foreground">{fiche.example}</p>
+            <p className="text-sm leading-relaxed text-foreground/85">{fiche.example}</p>
           </CardContent>
         </Card>
 
-        <Card className="mb-10 border-accent/30 bg-accent/5">
+        <Card className="mb-10 border-blue-200 bg-blue-50/50 shadow-sm">
           <CardContent className="p-6">
             <h2 id="astuce-oral" className="mb-3 flex items-center gap-2 text-lg font-semibold text-foreground">
-              <MessageCircle className="h-5 w-5 text-accent" />
+              <MessageCircle className="h-5 w-5 text-blue-700" />
               Astuce pour l'oral
             </h2>
-            <p className="text-sm leading-relaxed text-muted-foreground">{fiche.oralTip}</p>
+            <p className="text-sm leading-relaxed text-foreground/85">{fiche.oralTip}</p>
           </CardContent>
         </Card>
 
@@ -188,6 +215,7 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
                   description={related.description}
                   slug={related.slug}
                   theme={related.theme}
+                  themeSlug={related.themeSlug}
                 />
               ))}
             </div>

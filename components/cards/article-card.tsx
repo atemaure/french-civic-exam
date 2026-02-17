@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { CalendarDays, ArrowRight, Clock } from "lucide-react"
 import { toISODate } from "@/lib/data/articles"
+import { getIconByArticleCategory } from "@/lib/ui/theme-icons"
 
 interface ArticleCardProps {
   title: string
@@ -13,6 +14,8 @@ interface ArticleCardProps {
 
 export function ArticleCard({ title, excerpt, date, slug, category, readingTime }: ArticleCardProps) {
   const dateIso = toISODate(date) ?? date
+  const CategoryIcon = getIconByArticleCategory(category)
+
   return (
     <Link
       href={`/articles/${slug}`}
@@ -20,7 +23,8 @@ export function ArticleCard({ title, excerpt, date, slug, category, readingTime 
     >
       <div className="mb-4 flex items-center gap-3">
         {category && (
-          <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold tracking-wide text-primary">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold tracking-wide text-primary">
+            <CategoryIcon className="h-3.5 w-3.5" />
             {category}
           </span>
         )}

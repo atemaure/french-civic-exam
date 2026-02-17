@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { Clock3, Landmark, ShieldCheck, Target } from "lucide-react"
+import { ArrowRight, Clock3, ShieldCheck, Target } from "lucide-react"
 
 import { Breadcrumbs } from "@/components/seo/breadcrumbs"
 import { JsonLd } from "@/components/seo/json-ld"
@@ -8,6 +8,7 @@ import { examThemes, getExamThemeBySlug } from "@/lib/data/exam-themes"
 import { getFichesByTheme } from "@/lib/data/fiches"
 import { breadcrumbJsonLd } from "@/lib/seo/jsonld"
 import { createMetadata } from "@/lib/seo/metadata"
+import { getIconByExamThemeSlug } from "@/lib/ui/theme-icons"
 
 type PageProps = {
   params: Promise<{ themeSlug: string }>
@@ -54,6 +55,7 @@ export default async function ThemeDetailPage({ params }: PageProps) {
   ]
   const linkedThemeSlug = new URLSearchParams(theme.fichesHref.split("?")[1] ?? "").get("theme")
   const linkedFichesCount = linkedThemeSlug ? getFichesByTheme(linkedThemeSlug).length : 0
+  const ThemeIcon = getIconByExamThemeSlug(theme.slug)
 
   return (
     <div className="py-12 sm:py-16">
@@ -76,7 +78,7 @@ export default async function ThemeDetailPage({ params }: PageProps) {
         <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-b from-blue-50/70 to-background p-6 shadow-md shadow-black/5 sm:p-8">
           <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-blue-700 via-blue-500 to-slate-100" />
           <div className="absolute right-5 top-5 hidden h-10 w-10 items-center justify-center rounded-full border border-blue-200 bg-white/90 sm:flex">
-            <Landmark className="h-5 w-5 text-blue-700" />
+            <ThemeIcon className="h-5 w-5 text-blue-700" />
           </div>
 
           <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{theme.title}</h1>
@@ -193,13 +195,17 @@ export default async function ThemeDetailPage({ params }: PageProps) {
           <div className="grid gap-4 md:grid-cols-2">
             {theme.subThemes.map((subTheme) => (
               <article key={subTheme.slug} className="rounded-xl border border-border bg-card p-5 shadow-sm">
-                <h3 className="text-base font-semibold text-foreground">{subTheme.name}</h3>
+                <div className="flex items-start gap-2.5">
+                  <ThemeIcon className="mt-0.5 h-4 w-4 shrink-0 text-blue-700" />
+                  <h3 className="text-base font-semibold text-foreground">{subTheme.name}</h3>
+                </div>
                 <p className="mt-2 text-sm text-muted-foreground">{subTheme.info}</p>
                 <Link
                   href={`/themes-examen/${theme.slug}/${subTheme.slug}`}
-                  className="mt-4 inline-flex rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary"
+                  className="mt-4 inline-flex items-center gap-1 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary"
                 >
                   Voir plus
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </article>
             ))}

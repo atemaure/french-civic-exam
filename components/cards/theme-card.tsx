@@ -1,16 +1,6 @@
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
-import { Scale, Landmark, BookOpen, Heart, Users, Globe } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
-
-const themeIcons: Record<string, LucideIcon> = {
-  valeurs: Heart,
-  droits: Scale,
-  institutions: Landmark,
-  histoire: BookOpen,
-  vivre: Users,
-  europe: Globe,
-}
+import { getIconByFicheThemeSlug } from "@/lib/ui/theme-icons"
 
 interface ThemeCardProps {
   title: string
@@ -20,7 +10,7 @@ interface ThemeCardProps {
 }
 
 export function ThemeCard({ title, description, slug, ficheCount }: ThemeCardProps) {
-  const Icon = themeIcons[slug] || BookOpen
+  const Icon = getIconByFicheThemeSlug(slug)
 
   return (
     <Card className="group h-full transition-shadow hover:shadow-md">
