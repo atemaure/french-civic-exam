@@ -17,14 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/methodologie",
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
-    lastModified: new Date(),
     changeFrequency: "weekly",
     priority: path === "" ? 1 : 0.7,
   }))
 
   const ficheRoutes = fiches.map((fiche) => ({
     url: `${SITE_URL}/fiches/${fiche.slug}`,
-    lastModified: new Date(),
     changeFrequency: "monthly",
     priority: fiche.isEssential ? 0.8 : 0.6,
   }))
