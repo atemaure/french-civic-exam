@@ -6,6 +6,7 @@ import { getFichesByTheme, sortFichesByDate } from "@/lib/data/fiches"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { FicheCard } from "@/components/cards/fiche-card"
+import { AppCtaButton } from "@/components/app-cta-button"
 import { Breadcrumbs } from "@/components/seo/breadcrumbs"
 import { JsonLd } from "@/components/seo/json-ld"
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/jsonld"
@@ -437,6 +438,25 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 <p className="text-sm leading-relaxed text-foreground/85">{article.oralTip}</p>
               </CardContent>
             </Card>
+          )}
+
+          {(article.conclusionNote || article.conclusionCtaLabel) && (
+            <section className="mb-8 rounded-xl border border-border/70 bg-white p-6 shadow-sm">
+              <h2 className="mb-2 text-lg font-semibold text-foreground">Conclusion</h2>
+              {article.conclusionNote && (
+                <p className="text-sm leading-relaxed text-foreground/85">{article.conclusionNote}</p>
+              )}
+              {article.conclusionCtaLabel && (
+                <div className="mt-4">
+                  <AppCtaButton
+                    label={article.conclusionCtaLabel}
+                    href={article.conclusionCtaHref}
+                    openInNewTab
+                    size="default"
+                  />
+                </div>
+              )}
+            </section>
           )}
 
           {(relatedFiches.length > 0 || fallbackArticles.length > 0) && (
