@@ -6,6 +6,7 @@ import { getArticlesByCategory, getLatestArticles } from "@/lib/data/articles"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { FicheCard } from "@/components/cards/fiche-card"
+import { FicheDownloadActions } from "@/components/fiche-download-actions"
 import { Breadcrumbs } from "@/components/seo/breadcrumbs"
 import { JsonLd } from "@/components/seo/json-ld"
 import { breadcrumbJsonLd, learningResourceJsonLd } from "@/lib/seo/jsonld"
@@ -131,6 +132,7 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
           <p className="mt-4 text-base leading-relaxed text-foreground/80 sm:text-lg">
             {fiche.description}
           </p>
+          <FicheDownloadActions fiche={fiche} />
 
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             <div className="rounded-lg border border-blue-200 bg-white px-4 py-3">
