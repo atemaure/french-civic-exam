@@ -97,6 +97,10 @@ Optional:
 - `date`
 - `isEssential`
 
+Fiche export rule:
+- On fiche detail pages (`/fiches/[slug]`), download is image-only (`.png`).
+- Do not re-introduce PDF export unless product requirements change.
+
 ## 8) Theme and sub-theme schema
 Type: `lib/data/exam-themes/types.ts`
 
