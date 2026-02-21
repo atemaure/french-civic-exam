@@ -61,6 +61,7 @@ Consequences :
 - Phrases courtes, vocabulaire simple.
 - Chaque section doit apporter une information claire et utile.
 - Eviter les dates trop nombreuses si elles ne sont pas essentielles.
+- Longueur ideale de l'article complet : 600 a 900 mots (hors metadata), pour garder un bon equilibre entre profondeur et lisibilite.
 
 ## Ordre des articles
 

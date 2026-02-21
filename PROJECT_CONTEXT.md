@@ -32,6 +32,7 @@ Important current constraint:
 - Entry point: `lib/data/fiches/index.ts`
 - List page: `app/fiches/page.tsx`
 - Detail page: `app/fiches/[slug]/page.tsx`
+- Detail page includes image export action via `components/fiche-download-actions.tsx` (PNG only).
 
 ### Articles
 - Data folder: `lib/data/articles/*`
