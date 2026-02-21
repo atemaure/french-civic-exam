@@ -10,11 +10,15 @@ import { article as questions_mise_en_situation_entretien_civique } from "./ques
 import { article as role_premier_ministre } from "./role-premier-ministre"
 import { article as types_examen_civique_csp_cr_naturalisation } from "./types-examen-civique-csp-cr-naturalisation"
 import { article as erreurs_qui_font_echouer_entretien_civique } from "./erreurs-qui-font-echouer-entretien-civique"
+import { article as reponses_qui_rassurent_et_inquietent_agent } from "./reponses-qui-rassurent-et-inquietent-agent"
+import { article as comprendre_theme_droits_entretien_civique } from "./comprendre-theme-droits-entretien-civique"
 import { toISODate } from "./utils"
 
 export type { Article } from "./types"
 
 const baseArticles = [
+  comprendre_theme_droits_entretien_civique,
+  reponses_qui_rassurent_et_inquietent_agent,
   questions_mise_en_situation_entretien_civique,
   erreurs_qui_font_echouer_entretien_civique,
   napoleon_trois,
