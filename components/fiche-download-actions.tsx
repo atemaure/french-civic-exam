@@ -5,6 +5,7 @@ import { FileImage, Loader2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import type { Fiche } from "@/lib/data/fiches/types"
+import { cn } from "@/lib/utils"
 
 type TextBlock = {
   text: string
@@ -24,6 +25,7 @@ type SectionLayout = {
 
 interface FicheDownloadActionsProps {
   fiche: Fiche
+  className?: string
 }
 
 const IMAGE_WIDTH = 1800
@@ -371,7 +373,7 @@ function createFicheCanvas(fiche: Fiche) {
   return canvas
 }
 
-export function FicheDownloadActions({ fiche }: FicheDownloadActionsProps) {
+export function FicheDownloadActions({ fiche, className }: FicheDownloadActionsProps) {
   const [isExportingImage, setIsExportingImage] = useState(false)
 
   const fileBaseName = `fiche-${fiche.slug}`
@@ -404,10 +406,10 @@ export function FicheDownloadActions({ fiche }: FicheDownloadActionsProps) {
   }
 
   return (
-    <div className="mt-5 flex flex-wrap gap-2">
+    <div className={cn("flex flex-wrap gap-2", className)}>
       <Button type="button" variant="outline" className="bg-white" onClick={handleImageDownload} disabled={isExportingImage}>
         {isExportingImage ? <Loader2 className="h-4 w-4 animate-spin" /> : <FileImage className="h-4 w-4" />}
-        Télécharger l'image de la fiche
+        Télécharger la fiche
       </Button>
     </div>
   )

@@ -126,13 +126,15 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
               </span>
             )}
           </div>
-          <h1 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            {fiche.title}
-          </h1>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <h1 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              {fiche.title}
+            </h1>
+            <FicheDownloadActions fiche={fiche} className="shrink-0 sm:justify-end" />
+          </div>
           <p className="mt-4 text-base leading-relaxed text-foreground/80 sm:text-lg">
             {fiche.description}
           </p>
-          <FicheDownloadActions fiche={fiche} />
 
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             <div className="rounded-lg border border-blue-200 bg-white px-4 py-3">
