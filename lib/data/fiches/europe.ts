@@ -6,7 +6,7 @@ export const europe: FicheInput[] = [
     title: "La paix en Europe",
     description: "L’objectif fondateur de la construction européenne.",
     definition:
-      "L’Union européenne est née après la Seconde Guerre mondiale pour éviter de nouveaux conflits armés entre les pays européens. Elle repose sur la coopération politique, économique et diplomatique afin de garantir une paix durable sur le continent.",
+      "L’Union européenne est née après la Seconde Guerre mondiale pour éviter de nouveaux conflits armés entre les pays européens. Elle repose sur la coopération politique, économique et diplomatique afin de garantir une paix durable sur le continent. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale.",
     keyPoints: [
       "Création après 1945 pour éviter de nouvelles guerres",
       "Réconciliation entre anciens pays ennemis",
@@ -15,9 +15,9 @@ export const europe: FicheInput[] = [
       "Règlement pacifique des différends"
     ],
     example:
-      "La France et l’Allemagne, autrefois ennemies, coopèrent aujourd’hui étroitement au sein de l’Union européenne.",
+      "La France et l’Allemagne, autrefois ennemies, coopèrent aujourd’hui étroitement au sein de l’Union européenne.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que l’Europe a été créée après la guerre pour empêcher de nouveaux conflits.",
+      "Expliquez que l’Europe a été créée après la guerre pour empêcher de nouveaux conflits. Allez à l'essentiel et ajoutez un exemple personnel précis.",
     isEssential: true
   },
 
@@ -26,7 +26,7 @@ export const europe: FicheInput[] = [
     title: "Travailler dans un autre pays européen",
     description: "La liberté de travailler dans l’Union européenne.",
     definition:
-      "Les citoyens de l’Union européenne peuvent travailler dans un autre État membre sans permis de travail. Cette liberté favorise l’emploi, la mobilité professionnelle et l’intégration économique.",
+      "Les citoyens de l’Union européenne peuvent travailler dans un autre État membre sans permis de travail. Cette liberté favorise l’emploi, la mobilité professionnelle et l’intégration économique. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale.",
     keyPoints: [
       "Liberté de travailler dans un autre pays de l’UE",
       "Pas de permis de travail pour les citoyens européens",
@@ -35,9 +35,9 @@ export const europe: FicheInput[] = [
       "Application du droit du travail local"
     ],
     example:
-      "Un Français peut être salarié en Belgique ou en Allemagne dans les mêmes conditions qu’un citoyen local.",
+      "Un Français peut être salarié en Belgique ou en Allemagne dans les mêmes conditions qu’un citoyen local.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Dites que l’UE permet de travailler librement dans les autres pays membres.",
+      "Dites que l’UE permet de travailler librement dans les autres pays membres. Répondez en deux idées claires, puis donnez un exemple.",
     isEssential: true
   },
 
@@ -46,7 +46,7 @@ export const europe: FicheInput[] = [
     title: "Étudier en Europe",
     description: "Faciliter la mobilité étudiante et culturelle.",
     definition:
-      "L’Union européenne encourage les échanges universitaires afin de permettre aux étudiants d’étudier dans un autre pays européen, d’apprendre des langues et de découvrir d’autres cultures.",
+      "L’Union européenne encourage les échanges universitaires afin de permettre aux étudiants d’étudier dans un autre pays européen, d’apprendre des langues et de découvrir d’autres cultures. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale.",
     keyPoints: [
       "Mobilité étudiante encouragée",
       "Programmes d’échange européens",
@@ -55,9 +55,9 @@ export const europe: FicheInput[] = [
       "Ouverture culturelle"
     ],
     example:
-      "Un étudiant français peut suivre un semestre universitaire dans un autre pays européen.",
+      "Un étudiant français peut suivre un semestre universitaire dans un autre pays européen.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que l’Europe favorise les études à l’étranger.",
+      "Expliquez que l’Europe favorise les études à l’étranger. Formulez une réponse concise avec un exemple de votre quotidien.",
     isEssential: false
   },
 
@@ -66,7 +66,7 @@ export const europe: FicheInput[] = [
     title: "La protection du consommateur européen",
     description: "Des droits communs pour tous les consommateurs.",
     definition:
-      "L’Union européenne protège les consommateurs en fixant des règles communes sur la sécurité des produits, l’information et les recours en cas de litige.",
+      "L’Union européenne protège les consommateurs en fixant des règles communes sur la sécurité des produits, l’information et les recours en cas de litige. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale.",
     keyPoints: [
       "Sécurité des produits",
       "Information obligatoire du consommateur",
@@ -75,9 +75,9 @@ export const europe: FicheInput[] = [
       "Protection dans toute l’UE"
     ],
     example:
-      "Un produit acheté en ligne peut être retourné selon les règles européennes.",
+      "Un produit acheté en ligne peut être retourné selon les règles européennes.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Citez un droit concret du consommateur européen.",
+      "Citez un droit concret du consommateur européen. Donnez une explication brève et un exemple concret en France.",
     isEssential: false
   },
 
@@ -86,7 +86,7 @@ export const europe: FicheInput[] = [
     title: "Les normes européennes",
     description: "Garantir la sécurité et la qualité.",
     definition:
-      "Les normes européennes fixent des règles communes afin de garantir la sécurité, la qualité et la conformité des produits et services dans tous les pays membres.",
+      "Les normes européennes fixent des règles communes afin de garantir la sécurité, la qualité et la conformité des produits et services dans tous les pays membres. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale.",
     keyPoints: [
       "Normes communes",
       "Protection de la santé",
@@ -95,9 +95,9 @@ export const europe: FicheInput[] = [
       "Réduction des risques"
     ],
     example:
-      "Les jouets pour enfants doivent respecter des normes européennes strictes.",
+      "Les jouets pour enfants doivent respecter des normes européennes strictes.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que les normes européennes protègent les citoyens.",
+      "Expliquez que les normes européennes protègent les citoyens. Utilisez des phrases simples et terminez par un exemple personnel.",
     isEssential: false
   },
 
@@ -106,7 +106,7 @@ export const europe: FicheInput[] = [
     title: "La solidarité entre États européens",
     description: "Un principe essentiel de l’Union européenne.",
     definition:
-      "Les pays de l’Union européenne s’entraident face aux crises économiques, sanitaires ou humanitaires afin de renforcer la cohésion et réduire les inégalités.",
+      "Les pays de l’Union européenne s’entraident face aux crises économiques, sanitaires ou humanitaires afin de renforcer la cohésion et réduire les inégalités. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale.",
     keyPoints: [
       "Aide financière entre pays",
       "Solidarité en cas de crise",
@@ -115,9 +115,9 @@ export const europe: FicheInput[] = [
       "Responsabilité collective"
     ],
     example:
-      "Des aides européennes peuvent soutenir un pays en difficulté.",
+      "Des aides européennes peuvent soutenir un pays en difficulté.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que la solidarité est une valeur fondamentale de l’Europe.",
+      "Expliquez que la solidarité est une valeur fondamentale de l’Europe. Répondez clairement puis appuyez-vous sur une situation vécue.",
     isEssential: true
   },
 
@@ -126,7 +126,7 @@ export const europe: FicheInput[] = [
     title: "Les frontières extérieures de l’UE",
     description: "Une gestion commune pour la sécurité.",
     definition:
-      "Les frontières extérieures de l’Union européenne sont surveillées collectivement afin d’assurer la sécurité des citoyens tout en respectant les règles européennes et internationales.",
+      "Les frontières extérieures de l’Union européenne sont surveillées collectivement afin d’assurer la sécurité des citoyens tout en respectant les règles européennes et internationales. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale.",
     keyPoints: [
       "Contrôles aux frontières extérieures",
       "Sécurité collective",
@@ -135,9 +135,9 @@ export const europe: FicheInput[] = [
       "Gestion coordonnée"
     ],
     example:
-      "Les contrôles sont renforcés aux frontières extérieures de l’Union.",
+      "Les contrôles sont renforcés aux frontières extérieures de l’Union.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Dites que la sécurité des frontières est une responsabilité commune.",
+      "Dites que la sécurité des frontières est une responsabilité commune. Soyez bref, puis illustrez avec un exemple réel.",
     isEssential: false
   },
 
@@ -146,7 +146,7 @@ export const europe: FicheInput[] = [
     title: "L’environnement en Europe",
     description: "Agir ensemble pour protéger la planète.",
     definition:
-      "L’Union européenne met en place des politiques communes pour lutter contre le changement climatique et protéger l’environnement.",
+      "L’Union européenne met en place des politiques communes pour lutter contre le changement climatique et protéger l’environnement. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale.",
     keyPoints: [
       "Lutte contre le changement climatique",
       "Protection de la biodiversité",
@@ -155,9 +155,9 @@ export const europe: FicheInput[] = [
       "Responsabilité collective"
     ],
     example:
-      "L’UE impose des normes pour réduire les émissions polluantes.",
+      "L’UE impose des normes pour réduire les émissions polluantes.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que l’environnement est un enjeu commun européen.",
+      "Expliquez que l’environnement est un enjeu commun européen. Présentez l'idée principale et ajoutez un exemple pratique.",
     isEssential: false
   },
 
@@ -166,7 +166,7 @@ export const europe: FicheInput[] = [
     title: "L’égalité en Europe",
     description: "Un principe fondamental de l’Union européenne.",
     definition:
-      "L’Union européenne promeut l’égalité entre les citoyens et lutte contre toutes les formes de discrimination, notamment dans le travail et l’accès aux droits.",
+      "L’Union européenne promeut l’égalité entre les citoyens et lutte contre toutes les formes de discrimination, notamment dans le travail et l’accès aux droits. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale.",
     keyPoints: [
       "Égalité entre les citoyens",
       "Non-discrimination",
@@ -175,9 +175,9 @@ export const europe: FicheInput[] = [
       "Valeur fondamentale"
     ],
     example:
-      "Les discriminations au travail sont interdites dans toute l’UE.",
+      "Les discriminations au travail sont interdites dans toute l’UE.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Reliez l’égalité aux valeurs européennes.",
+      "Reliez l’égalité aux valeurs européennes. Répondez de façon directe avec un exemple facile à comprendre.",
     isEssential: true
   },
 
@@ -186,7 +186,7 @@ export const europe: FicheInput[] = [
     title: "La jeunesse en Europe",
     description: "Soutenir les jeunes dans l’Union européenne.",
     definition:
-      "L’Union européenne soutient la jeunesse à travers des politiques d’éducation, d’emploi et d’engagement citoyen.",
+      "L’Union européenne soutient la jeunesse à travers des politiques d’éducation, d’emploi et d’engagement citoyen. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale. Elle s'inscrit dans les valeurs républicaines et le respect de la loi commune.",
     keyPoints: [
       "Soutien à la formation",
       "Insertion professionnelle",
@@ -194,9 +194,9 @@ export const europe: FicheInput[] = [
       "Engagement citoyen"
     ],
     example:
-      "Des programmes européens soutiennent l’emploi des jeunes.",
+      "Des programmes européens soutiennent l’emploi des jeunes.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que l’Europe investit dans la jeunesse.",
+      "Expliquez que l’Europe investit dans la jeunesse. Faites court, puis montrez un exemple tiré de votre expérience.",
     isEssential: false
   },
 
@@ -205,7 +205,7 @@ export const europe: FicheInput[] = [
     title: "La culture en Europe",
     description: "Une richesse culturelle partagée.",
     definition:
-      "L’Union européenne valorise la diversité culturelle et linguistique tout en encourageant les échanges entre les peuples.",
+      "L’Union européenne valorise la diversité culturelle et linguistique tout en encourageant les échanges entre les peuples. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale. Elle s'inscrit dans les valeurs républicaines et le respect de la loi commune.",
     keyPoints: [
       "Diversité culturelle",
       "Patrimoine commun",
@@ -213,9 +213,9 @@ export const europe: FicheInput[] = [
       "Échanges culturels"
     ],
     example:
-      "Des festivals et projets culturels européens sont soutenus.",
+      "Des festivals et projets culturels européens sont soutenus.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Soulignez la diversité culturelle européenne.",
+      "Soulignez la diversité culturelle européenne. Répondez simplement, en donnant un exemple concret.",
     isEssential: false
   },
 
@@ -224,7 +224,7 @@ export const europe: FicheInput[] = [
     title: "Les droits des travailleurs en Europe",
     description: "Des protections minimales garanties.",
     definition:
-      "L’Union européenne fixe des règles minimales pour protéger les travailleurs, notamment sur le temps de travail, la sécurité et l’égalité.",
+      "L’Union européenne fixe des règles minimales pour protéger les travailleurs, notamment sur le temps de travail, la sécurité et l’égalité. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale.",
     keyPoints: [
       "Temps de travail encadré",
       "Temps de repos obligatoire",
@@ -233,9 +233,9 @@ export const europe: FicheInput[] = [
       "Droits communs"
     ],
     example:
-      "Les travailleurs bénéficient de repos hebdomadaires obligatoires.",
+      "Les travailleurs bénéficient de repos hebdomadaires obligatoires.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que l’Europe protège les travailleurs.",
+      "Expliquez que l’Europe protège les travailleurs. Faites une réponse courte et illustrez-la avec un cas vécu.",
     isEssential: true
   },
 
@@ -244,7 +244,7 @@ export const europe: FicheInput[] = [
     title: "La coopération scientifique",
     description: "Partager la recherche et l’innovation.",
     definition:
-      "Les pays européens coopèrent dans la recherche scientifique afin de favoriser l’innovation et le progrès.",
+      "Les pays européens coopèrent dans la recherche scientifique afin de favoriser l’innovation et le progrès. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale. Elle s'inscrit dans les valeurs républicaines et le respect de la loi commune.",
     keyPoints: [
       "Recherche commune",
       "Innovation",
@@ -252,9 +252,9 @@ export const europe: FicheInput[] = [
       "Projets transnationaux"
     ],
     example:
-      "Des chercheurs de plusieurs pays travaillent ensemble.",
+      "Des chercheurs de plusieurs pays travaillent ensemble.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Montrez que l’Europe coopère dans la science.",
+      "Montrez que l’Europe coopère dans la science. Allez à l'essentiel et ajoutez un exemple personnel précis.",
     isEssential: false
   },
 
@@ -263,7 +263,7 @@ export const europe: FicheInput[] = [
     title: "Le numérique en Europe",
     description: "Encadrer le numérique pour protéger les citoyens.",
     definition:
-      "L’Union européenne met en place des règles pour encadrer le numérique et protéger les données personnelles.",
+      "L’Union européenne met en place des règles pour encadrer le numérique et protéger les données personnelles. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale.",
     keyPoints: [
       "Protection des données personnelles",
       "Règles communes",
@@ -271,9 +271,9 @@ export const europe: FicheInput[] = [
       "Droits des utilisateurs"
     ],
     example:
-      "Les données personnelles sont protégées par des règles européennes.",
+      "Les données personnelles sont protégées par des règles européennes.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que l’Europe protège les citoyens en ligne.",
+      "Expliquez que l’Europe protège les citoyens en ligne. Répondez en deux idées claires, puis donnez un exemple.",
     isEssential: false
   },
 
@@ -282,7 +282,7 @@ export const europe: FicheInput[] = [
     title: "L’égalité des chances en Europe",
     description: "Réduire les écarts sociaux et économiques.",
     definition:
-      "L’Union européenne cherche à réduire les inégalités entre régions et populations afin de garantir l’égalité des chances.",
+      "L’Union européenne cherche à réduire les inégalités entre régions et populations afin de garantir l’égalité des chances. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale. Elle s'inscrit dans les valeurs républicaines et le respect de la loi commune.",
     keyPoints: [
       "Cohésion sociale",
       "Soutien aux régions",
@@ -290,9 +290,9 @@ export const europe: FicheInput[] = [
       "Solidarité"
     ],
     example:
-      "Certaines régions bénéficient de fonds européens.",
+      "Certaines régions bénéficient de fonds européens.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que l’Europe agit pour réduire les inégalités.",
+      "Expliquez que l’Europe agit pour réduire les inégalités. Formulez une réponse concise avec un exemple de votre quotidien.",
     isEssential: false
   },
 
@@ -301,7 +301,7 @@ export const europe: FicheInput[] = [
     title: "La sécurité collective",
     description: "Une coopération entre États européens.",
     definition:
-      "Les États européens coopèrent pour assurer la sécurité, prévenir les menaces et protéger les citoyens.",
+      "Les États européens coopèrent pour assurer la sécurité, prévenir les menaces et protéger les citoyens. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale. Elle s'inscrit dans les valeurs républicaines et le respect de la loi commune.",
     keyPoints: [
       "Coopération entre États",
       "Prévention des menaces",
@@ -309,9 +309,9 @@ export const europe: FicheInput[] = [
       "Sécurité partagée"
     ],
     example:
-      "Les pays échangent des informations pour lutter contre les menaces.",
+      "Les pays échangent des informations pour lutter contre les menaces.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que la sécurité est une responsabilité partagée.",
+      "Expliquez que la sécurité est une responsabilité partagée. Donnez une explication brève et un exemple concret en France.",
     isEssential: false
   },
 
@@ -320,7 +320,7 @@ export const europe: FicheInput[] = [
     title: "Les droits des voyageurs",
     description: "Des protections lors des déplacements.",
     definition:
-      "Les voyageurs bénéficient de droits communs en Europe, notamment en cas de retard, d’annulation ou de problème de transport.",
+      "Les voyageurs bénéficient de droits communs en Europe, notamment en cas de retard, d’annulation ou de problème de transport. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale. Elle s'inscrit dans les valeurs républicaines et le respect de la loi commune.",
     keyPoints: [
       "Droit à l’information",
       "Indemnisation possible",
@@ -328,9 +328,9 @@ export const europe: FicheInput[] = [
       "Règles communes"
     ],
     example:
-      "Un passager peut être indemnisé en cas de retard important.",
+      "Un passager peut être indemnisé en cas de retard important.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Citez un droit des voyageurs européens.",
+      "Citez un droit des voyageurs européens. Utilisez des phrases simples et terminez par un exemple personnel.",
     isEssential: false
   },
 
@@ -339,7 +339,7 @@ export const europe: FicheInput[] = [
     title: "L’aide humanitaire européenne",
     description: "Soutenir les populations en difficulté.",
     definition:
-      "L’Union européenne finance des actions humanitaires pour aider les populations touchées par des crises ou catastrophes.",
+      "L’Union européenne finance des actions humanitaires pour aider les populations touchées par des crises ou catastrophes. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale. Elle s'inscrit dans les valeurs républicaines et le respect de la loi commune.",
     keyPoints: [
       "Aide d’urgence",
       "Solidarité internationale",
@@ -347,9 +347,9 @@ export const europe: FicheInput[] = [
       "Actions humanitaires"
     ],
     example:
-      "L’Europe finance des aides après des catastrophes naturelles.",
+      "L’Europe finance des aides après des catastrophes naturelles.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que l’Europe agit aussi à l’international.",
+      "Expliquez que l’Europe agit aussi à l’international. Répondez clairement puis appuyez-vous sur une situation vécue.",
     isEssential: false
   },
 
@@ -358,7 +358,7 @@ export const europe: FicheInput[] = [
     title: "La coopération éducative",
     description: "Partager les savoirs en Europe.",
     definition:
-      "Les pays européens coopèrent dans le domaine de l’éducation afin d’améliorer la qualité de l’enseignement et favoriser les échanges.",
+      "Les pays européens coopèrent dans le domaine de l’éducation afin d’améliorer la qualité de l’enseignement et favoriser les échanges. Cette coopération facilite aussi la mobilité des élèves, étudiants et enseignants entre les États membres. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale.",
     keyPoints: [
       "Échanges éducatifs",
       "Reconnaissance des diplômes",
@@ -366,9 +366,9 @@ export const europe: FicheInput[] = [
       "Partenariats scolaires"
     ],
     example:
-      "Des écoles européennes mènent des projets communs.",
+      "Des écoles européennes mènent des projets communs.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que l’Europe coopère aussi dans l’éducation.",
+      "Expliquez que l’Europe coopère aussi dans l’éducation. Soyez bref, puis illustrez avec un exemple réel.",
     isEssential: false
   },
 
@@ -377,7 +377,7 @@ export const europe: FicheInput[] = [
     title: "L’avenir du projet européen",
     description: "Un projet politique en évolution.",
     definition:
-      "L’Union européenne continue d’évoluer pour répondre aux défis économiques, sociaux, environnementaux et géopolitiques.",
+      "L’Union européenne continue d’évoluer pour répondre aux défis économiques, sociaux, environnementaux et géopolitiques. En entretien civique, cette notion doit être comprise dans son application concrète: elle protège les droits, encadre les devoirs et renforce la cohésion sociale. Elle s'inscrit dans les valeurs républicaines et le respect de la loi commune.",
     keyPoints: [
       "Projet en construction",
       "Adaptation aux crises",
@@ -385,9 +385,9 @@ export const europe: FicheInput[] = [
       "Renforcement de la coopération"
     ],
     example:
-      "L’Europe adapte ses politiques face aux nouvelles crises.",
+      "L’Europe adapte ses politiques face aux nouvelles crises.\nExemple possible: dans une situation vécue en France (école, travail, administration ou voisinage), expliquez comment ce principe guide une décision ou un comportement respectueux des autres.",
     oralTip:
-      "Expliquez que l’Europe continue de se construire.",
+      "Expliquez que l’Europe continue de se construire. Présentez l'idée principale et ajoutez un exemple pratique.",
     isEssential: false
   }
 ]

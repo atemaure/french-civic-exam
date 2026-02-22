@@ -12,11 +12,13 @@ import { article as types_examen_civique_csp_cr_naturalisation } from "./types-e
 import { article as erreurs_qui_font_echouer_entretien_civique } from "./erreurs-qui-font-echouer-entretien-civique"
 import { article as reponses_qui_rassurent_et_inquietent_agent } from "./reponses-qui-rassurent-et-inquietent-agent"
 import { article as comprendre_theme_droits_entretien_civique } from "./comprendre-theme-droits-entretien-civique"
+import { article as assemblee_nationale_role_pouvoirs } from "./assemblee-nationale-role-pouvoirs"
 import { toISODate } from "./utils"
 
 export type { Article } from "./types"
 
 const baseArticles = [
+  assemblee_nationale_role_pouvoirs,
   comprendre_theme_droits_entretien_civique,
   reponses_qui_rassurent_et_inquietent_agent,
   questions_mise_en_situation_entretien_civique,

@@ -101,6 +101,12 @@ Fiche export rule:
 - On fiche detail pages (`/fiches/[slug]`), download is image-only (`.png`).
 - Do not re-introduce PDF export unless product requirements change.
 
+Fiche writing balance rule:
+- `definition` and `example` must carry most of the pedagogical detail.
+- `oralTip` must stay concise and actionable (1 to 2 short sentences).
+- Do not move long methodological blocks into `oralTip`.
+- Keep fiche content rich and balanced (target: at least ~800 characters overall, without overloading `oralTip`).
+
 ## 8) Theme and sub-theme schema
 Type: `lib/data/exam-themes/types.ts`
 
