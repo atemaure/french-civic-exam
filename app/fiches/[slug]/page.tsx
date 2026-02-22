@@ -192,7 +192,7 @@ export default async function FichePage({ params }: { params: Promise<{ slug: st
               <Lightbulb className="h-5 w-5 text-blue-700" />
               Exemple concret
             </h2>
-            <p className="text-sm leading-relaxed text-foreground/85">{fiche.example}</p>
+            <p className="whitespace-pre-line text-sm leading-relaxed text-foreground/85">{fiche.example}</p>
           </CardContent>
         </Card>
 

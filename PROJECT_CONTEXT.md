@@ -33,6 +33,7 @@ Important current constraint:
 - List page: `app/fiches/page.tsx`
 - Detail page: `app/fiches/[slug]/page.tsx`
 - Detail page includes image export action via `components/fiche-download-actions.tsx` (PNG only).
+- Authoring rule: keep fiche detail in `definition` + `example`; keep `oralTip` short.
 
 ### Articles
 - Data folder: `lib/data/articles/*`
