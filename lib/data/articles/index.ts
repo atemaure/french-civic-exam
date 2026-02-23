@@ -13,11 +13,13 @@ import { article as erreurs_qui_font_echouer_entretien_civique } from "./erreurs
 import { article as reponses_qui_rassurent_et_inquietent_agent } from "./reponses-qui-rassurent-et-inquietent-agent"
 import { article as comprendre_theme_droits_entretien_civique } from "./comprendre-theme-droits-entretien-civique"
 import { article as assemblee_nationale_role_pouvoirs } from "./assemblee-nationale-role-pouvoirs"
+import { article as role_senat_institutions_francaises } from "./role-senat-institutions-francaises"
 import { toISODate } from "./utils"
 
 export type { Article } from "./types"
 
 const baseArticles = [
+  role_senat_institutions_francaises,
   assemblee_nationale_role_pouvoirs,
   comprendre_theme_droits_entretien_civique,
   reponses_qui_rassurent_et_inquietent_agent,
