@@ -8,7 +8,4 @@ export interface Article {
   readingTime: string
   keyPoints: string[]
   oralTip?: string
-  conclusionNote?: string
-  conclusionCtaLabel?: string
-  conclusionCtaHref?: string
 }

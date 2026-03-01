@@ -14,11 +14,13 @@ import { article as reponses_qui_rassurent_et_inquietent_agent } from "./reponse
 import { article as comprendre_theme_droits_entretien_civique } from "./comprendre-theme-droits-entretien-civique"
 import { article as assemblee_nationale_role_pouvoirs } from "./assemblee-nationale-role-pouvoirs"
 import { article as role_senat_institutions_francaises } from "./role-senat-institutions-francaises"
+import { article as pourquoi_faire_quiz_naturalisation_gratuit_avant_entretien_civique } from "./pourquoi-faire-quiz-naturalisation-gratuit-avant-entretien-civique"
 import { toISODate } from "./utils"
 
 export type { Article } from "./types"
 
 const baseArticles = [
+  pourquoi_faire_quiz_naturalisation_gratuit_avant_entretien_civique,
   role_senat_institutions_francaises,
   assemblee_nationale_role_pouvoirs,
   comprendre_theme_droits_entretien_civique,

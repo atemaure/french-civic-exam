@@ -95,7 +95,4 @@ Plus vous êtes capable d’expliquer simplement, plus votre maîtrise est créd
     "Les mises en situation révèlent la vraie compréhension",
   ],
   oralTip: "Expliquez chaque valeur avec vos propres mots et illustrez-la par un exemple concret.",
-  conclusionNote: "Pour aller plus loin, entraînez-vous gratuitement à l'entretien de naturalisation avec des examens blancs et des questions adaptées au format réel.",
-  conclusionCtaLabel: "S'entraîner gratuitement",
-  conclusionCtaHref: "https://app.quizcitoyen.fr",
 }
