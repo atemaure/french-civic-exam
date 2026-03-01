@@ -52,6 +52,7 @@ type ListItem = {
 type ContentBlock =
   | { type: "h2" | "h3" | "p"; text: string }
   | { type: "ul" | "ol"; items: ListItem[] }
+  | { type: "cta"; label: string; href: string }
 
 function parseArticleContent(content: string): ContentBlock[] {
   const blocks: ContentBlock[] = []
@@ -131,6 +132,20 @@ function parseArticleContent(content: string): ContentBlock[] {
     if (boldLabelParagraph) {
       flushList()
       blocks.push({ type: "p", text: line })
+      continue
+    }
+
+    if (line.startsWith("<a") && line.includes('data-slot="button"')) {
+      const hrefMatch = line.match(/href="([^"]+)"/i)
+      const labelMatch = line.match(/>([^<>]+)<\/a>$/i)
+      const href = hrefMatch?.[1] ?? "https://app.quizcitoyen.fr"
+      const label = labelMatch?.[1]?.trim() ?? "Accéder à l'app QuizCitoyen"
+      flushList()
+      blocks.push({
+        type: "cta",
+        href,
+        label,
+      })
       continue
     }
 
@@ -423,6 +438,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                     </ol>
                   )
                 }
+                if (block.type === "cta") {
+                  return (
+                    <div key={index} className="my-5 flex justify-start">
+                      <AppCtaButton label={block.label} href={block.href} size="default" openInNewTab />
+                    </div>
+                  )
+                }
                 return null
               })}
             </CardContent>
@@ -438,25 +460,6 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 <p className="text-sm leading-relaxed text-foreground/85">{article.oralTip}</p>
               </CardContent>
             </Card>
-          )}
-
-          {(article.conclusionNote || article.conclusionCtaLabel) && (
-            <section className="mb-8 rounded-xl border border-border/70 bg-white p-6 shadow-sm">
-              <h2 className="mb-2 text-lg font-semibold text-foreground">Conclusion</h2>
-              {article.conclusionNote && (
-                <p className="text-sm leading-relaxed text-foreground/85">{article.conclusionNote}</p>
-              )}
-              {article.conclusionCtaLabel && (
-                <div className="mt-4">
-                  <AppCtaButton
-                    label={article.conclusionCtaLabel}
-                    href={article.conclusionCtaHref}
-                    openInNewTab
-                    size="default"
-                  />
-                </div>
-              )}
-            </section>
           )}
 
           {(relatedFiches.length > 0 || fallbackArticles.length > 0) && (
