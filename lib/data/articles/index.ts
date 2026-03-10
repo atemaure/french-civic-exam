@@ -1,5 +1,6 @@
 import { article as preparer_entretien_naturalisation } from "./preparer-entretien-naturalisation"
 import { article as valeurs_fondamentales_republique } from "./valeurs-fondamentales-republique"
+import { article as devise_liberte_egalite_fraternite } from "./devise-liberte-egalite-fraternite"
 import { article as role_president_republique } from "./role-president-republique"
 import { article as symboles_republique_francaise } from "./symboles-republique-francaise"
 import { article as laicite_france_explication } from "./laicite-france-explication"
@@ -32,6 +33,7 @@ const baseArticles = [
   role_premier_ministre,
   preparer_entretien_naturalisation,
   valeurs_fondamentales_republique,
+  devise_liberte_egalite_fraternite,
   role_president_republique,
   symboles_republique_francaise,
   types_examen_civique_csp_cr_naturalisation,
