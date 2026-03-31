@@ -11,7 +11,9 @@ import { article as questions_mise_en_situation_entretien_civique } from "./ques
 import { article as role_premier_ministre } from "./role-premier-ministre"
 import { article as types_examen_civique_csp_cr_naturalisation } from "./types-examen-civique-csp-cr-naturalisation"
 import { article as erreurs_qui_font_echouer_entretien_civique } from "./erreurs-qui-font-echouer-entretien-civique"
+import { article as defenseur_des_droits_role_saisine } from "./defenseur-des-droits-role-saisine"
 import { article as reponses_qui_rassurent_et_inquietent_agent } from "./reponses-qui-rassurent-et-inquietent-agent"
+import { article as conseil_etat_role_missions } from "./conseil-etat-role-missions"
 import { article as comprendre_theme_droits_entretien_civique } from "./comprendre-theme-droits-entretien-civique"
 import { article as assemblee_nationale_role_pouvoirs } from "./assemblee-nationale-role-pouvoirs"
 import { article as role_senat_institutions_francaises } from "./role-senat-institutions-francaises"
@@ -24,10 +26,12 @@ const baseArticles = [
   pourquoi_faire_quiz_naturalisation_gratuit_avant_entretien_civique,
   role_senat_institutions_francaises,
   assemblee_nationale_role_pouvoirs,
+  conseil_etat_role_missions,
   comprendre_theme_droits_entretien_civique,
   reponses_qui_rassurent_et_inquietent_agent,
   questions_mise_en_situation_entretien_civique,
   erreurs_qui_font_echouer_entretien_civique,
+  defenseur_des_droits_role_saisine,
   napoleon_trois,
   napoleon_premier,
   role_premier_ministre,
